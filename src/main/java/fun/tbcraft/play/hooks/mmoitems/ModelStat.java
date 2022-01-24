@@ -1,5 +1,6 @@
 package fun.tbcraft.play.hooks.mmoitems;
 
+import fun.tbcraft.play.TBCPlugin;
 import io.lumine.mythic.lib.MythicLib;
 import io.lumine.mythic.lib.api.item.ItemTag;
 import io.lumine.mythic.lib.api.util.AltChar;
@@ -71,6 +72,9 @@ public class ModelStat extends StringListStat{
 
     @Override
     public void whenDisplayed (List<String> lore , Optional<RandomStatData> statData) {
+        if ( statData.isEmpty() ){
+            TBCPlugin.errorLog("Bad Stat Data! ");
+        }
         if (statData.isPresent()) {
             lore.add(ChatColor.GRAY + "Current Value:");
             StringListData data = (StringListData) statData.get();
