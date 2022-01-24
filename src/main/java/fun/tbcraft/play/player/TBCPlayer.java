@@ -1,6 +1,7 @@
 package fun.tbcraft.play.player;
 
 import eu.asangarin.tt.player.PlayerData;
+import fun.tbcraft.play.TBCPlugin;
 import fun.tbcraft.play.utils.BodyPartsAPI;
 import io.lumine.mythic.lib.api.player.MMOPlayerData;
 import me.devtec.theapi.TheAPI;
@@ -22,6 +23,7 @@ public class TBCPlayer{
 
     public TBCPlayer(UUID id){
         if ( Bukkit.getPlayer(id)==null ){
+            TBCPlugin.callEmergency("Bad UUID for TBCPlayer");
             return;
         }
         this.storedPlayer = Bukkit.getPlayer(id);
