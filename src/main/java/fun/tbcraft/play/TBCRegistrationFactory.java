@@ -9,11 +9,12 @@ import org.bukkit.plugin.java.JavaPlugin;
 
 public class TBCRegistrationFactory{
     static void registerCommands(JavaPlugin plugin, String commandText, CommandExecutor executor, TabCompleter tab) {
-        Validate.notNull(plugin.getCommand(commandText),"Command Cannot Be Empty");
+        final var calledCommand = plugin.getCommand(commandText);
+        Validate.notNull(calledCommand ,"Command Cannot Be Empty");
 
-        plugin.getCommand(commandText).setExecutor(executor);
+        calledCommand.setExecutor(executor);
         if (tab != null) {
-            plugin.getCommand(commandText).setTabCompleter(tab);
+            calledCommand.setTabCompleter(tab);
         }
 
     }
