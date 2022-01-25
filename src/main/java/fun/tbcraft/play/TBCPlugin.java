@@ -1,15 +1,15 @@
 package fun.tbcraft.play;
 
+import com.palmergames.bukkit.towny.TownyAPI;
 import fun.tbcraft.play.commands.MainCommands;
 import fun.tbcraft.play.hooks.mmoitems.NewStats;
 import fun.tbcraft.play.utils.log.TBCFileLogger;
-import io.lumine.xikage.mythicmobs.utils.chat.ColorString;
+import io.lumine.mythic.utils.chat.ColorString;
 import io.papermc.lib.PaperLib;
 import me.devtec.theapi.configapi.Config;
 import me.devtec.theapi.utils.datakeeper.DataType;
 import net.Indyuce.mmoitems.MMOItems;
 import org.bukkit.Bukkit;
-import org.bukkit.Chunk;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
@@ -19,9 +19,7 @@ import org.bukkit.event.Listener;
 import org.bukkit.plugin.Plugin;
 import org.bukkit.plugin.java.JavaPlugin;
 
-import java.util.Arrays;
-import java.util.concurrent.ExecutionException;
-import java.util.stream.Collectors;
+import java.util.ArrayList;
 
 public class TBCPlugin extends JavaPlugin{
     private static Plugin plugin = null;
@@ -76,24 +74,35 @@ public class TBCPlugin extends JavaPlugin{
         if ( settings == null ){
             settings = new Config("TBCPluginV2/settings.yml");
         }
-
-        if ( config.exists("Enchanting.Enabled") ){
-            errorLog("Enchanting Enabled but not found!");
+        if ( settings.getKeys().isEmpty() ) {
+            settings.addDefault("Events.Enabled" , new ArrayList<>());
+            settings.addDefault("Events.Disabled" , new ArrayList<>());
+            settings.addDefault("Attribute.Tracking" , new Config.Node(true));
+            settings.addDefault("Attribute.Enabled" , new Config.Node(true));
+            settings.save();
+            log("Loaded Settings");
         }
-        else {
-            config.addDefault("Enchanting.Enabled",false);
-            config.addDefault("Enchanting.Amount",2);
-            config.addDefault("Enchanting.Backup",true);
+        if ( config.getKeys().size() == 0  ) {
+            config.addDefault("Enchanting.Enabled" , false);
+            config.addDefault("Enchanting.Amount" , 2);
+            config.addDefault("Enchanting.Backup" , true);
             config.save();
             log("Added Config Setting: " + "[Enchanting.Enabled]");
         }
-
         if ( PaperLib.isPaper() ){
             paperServer = true;
             log("Paper Server for TBC Initiated....");
             try {
                 if ( Bukkit.getPluginManager().isPluginEnabled("Towny") ) {
                     //Only register if needed with towny!
+                    log("Towny Located");
+                    final var world = Bukkit.getWorld(config.getStringList("Towny.Worlds").get(0));
+
+                    if ( world != null ){
+                        if ( TownyAPI.getInstance().isTownyWorld(world) ) {
+                            log("Towny World: " + world.getName());
+                    }
+                    }
                 }
             } catch (Exception e) {
                 e.printStackTrace();
@@ -127,70 +136,35 @@ public class TBCPlugin extends JavaPlugin{
     }
     @Override
     public boolean onCommand (CommandSender sender , Command command , String label , String[] args) {
-        if ( label.equalsIgnoreCase("debugTBC")|| label.equalsIgnoreCase("DebugTBC") || label.equalsIgnoreCase("debugtbc")){
-            if ( !( sender instanceof Player player) ) {
-                TBCLogger.logError("Player Use Only for This...");
-                return false;
-            }
-            boolean en = false;
-            if ( Arrays.stream(args).collect(Collectors.toList()).contains("end") ){
-                player.sendRawMessage(ColorString.get("&cENDING!"));
-                player.damage(player.getHealth() - 1);
-            }
-            for(final String s : args) {
-                if ( s.equalsIgnoreCase("start") ) {
-                    en = true;
-                    break;
-                }
-            }
-            if ( en ){
-                errorLog("Starting Debug Log...");
-                player.sendRawMessage(ColorString.get("&aSystem Debug Loading..."));
+        if ( label.equalsIgnoreCase("tbc") || label.equalsIgnoreCase("TBC") ){
+            final var amountOfArgs = args.length;
 
-                if ( PaperLib.isChunkGenerated(player.getLocation()) ) {
-                    final var chunkAsync = PaperLib.getChunkAtAsync(player.getLocation());
+            if ( amountOfArgs > 0 ){
+                if ( amountOfArgs == 1 ){
+                    if ( args[0].equalsIgnoreCase("reload") || args[0].equalsIgnoreCase("load") ){
+                        config.reload();
+                        settings.reload();
+                        reloadConfig();
+                        log("Reloading TBC!");
+                        if ( sender instanceof Player player ){
+                            player.sendRawMessage(ColorString.get("&aReloading TBC Plugin..."));
+                        }
 
-                    if ( chunkAsync.isCancelled() ){
-                        errorLog("Cancelled!");
-                        player.sendRawMessage(ColorString.get("&4Evil Chunk Async!"));
-                    }
-                    if ( chunkAsync.isCompletedExceptionally() ){
-                        errorLog("Completed : Except");
-                        player.sendRawMessage("&eCompleted Exceptionally!");
                         return true;
                     }
+                    else{
+                        if ( sender instanceof Player p ){
+                            final var thisArg = args[0];
+                            final var player = Bukkit.getPlayer(thisArg);
+                            if ( player != null ) {
+                                player.sendPluginMessage(TBCPlugin.plugin,"",new byte[]{Byte.parseByte("You have been loaded!")});
 
-                    Chunk actualChunk = null;
-                    try {
-                        actualChunk = chunkAsync.get();
-                    } catch (InterruptedException | ExecutionException e) {
-                        e.printStackTrace();
-                    }
-
-                    if ( actualChunk == null ){
-                        callEmergency("Very Invalid Actual Chunk: " + player.getName());
-                    }
-                    final var e = actualChunk.getEntities();
-                    if ( Arrays.stream(e).anyMatch(entity -> entity.getUniqueId()==player.getUniqueId()) ){
-                        final var listed = Arrays.stream(e).toList();
-
-                        if ( listed.contains(Bukkit.getEntity(player.getUniqueId())) ) {
-                            final var ent = listed.get(listed.indexOf(Bukkit.getEntity(player.getUniqueId())));
-
-                            if ( ent.getName().equalsIgnoreCase(player.getName()) ){
-                                player.sendRawMessage(ColorString.get("&aMatched Entity! Parsing Complete for "));
-                                player.sendRawMessage(ColorString.get("&7" + actualChunk.getX() + " " + actualChunk.getZ()));
-                                player.sendRawMessage(ColorString.get("&aCompleted!"));
-                                return true;
                             }
                         }
                     }
-
                 }
-                return true;
             }
         }
-
         return new MainCommands().onCommand(sender, command, label, args);
     }
 
