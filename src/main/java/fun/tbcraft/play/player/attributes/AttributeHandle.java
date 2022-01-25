@@ -1,11 +1,13 @@
 package fun.tbcraft.play.player.attributes;
 
+import io.lumine.mythic.utils.chat.ColorString;
+import io.lumine.xikage.mythicmobs.adapters.bukkit.BukkitPlayer;
 import io.lumine.xikage.mythicmobs.api.bukkit.BukkitAPIHelper;
-import io.lumine.xikage.mythicmobs.skills.Skill;
+import io.lumine.xikage.mythicmobs.mobs.GenericCaster;
+import io.lumine.xikage.mythicmobs.skills.*;
 import net.Indyuce.mmocore.MMOCore;
 import net.Indyuce.mmocore.api.player.PlayerData;
 import net.Indyuce.mmocore.api.player.attribute.PlayerAttributes;
-import org.bukkit.entity.Entity;
 import org.bukkit.entity.Player;
 
 import java.util.HashMap;
@@ -29,11 +31,35 @@ public abstract class AttributeHandle{
 
     }
 
-    public boolean isValid ( ) {
-        return instanced.getPlayerLevel(playerData) == instanced.getMaxLevel();
-    }
+    /**
+     * A simple test method for casting. This has not been setup yet.
+     * @param skillName Skill to use.
+     * @return if skill is casted.
+     */
+    public boolean cast(String skillName){
+        SkillCaster caster = new GenericCaster(new BukkitPlayer(player));
+        SkillMetadata metadata = new SkillMetadata(SkillTrigger.API,caster,new BukkitPlayer(player));
 
-    public boolean cast (Entity e) {
-        return false;
+        //This is just a test, messing with the custom skill casting?
+        SkillCondition condition = new SkillCondition("");
+
+        final var isCasted = new BukkitAPIHelper().castSkill(caster.getEntity().getBukkitEntity() , skillName);
+
+        if ( canCast(condition.evaluateCaster(metadata)) ){
+            if ( isCasted ){
+                player.sendRawMessage(ColorString.get("&cCondition Casted"));
+            }
+            else {
+                player.sendRawMessage(ColorString.get("&aCondition Failed?"));
+            }
+        }
+        else {
+            player.sendRawMessage(ColorString.get("&cBad Condition Setup"));
+        }
+        return canCast(condition.evaluateCaster(metadata));
+
+    }
+    public boolean canCast(boolean state){
+        return state;
     }
 }

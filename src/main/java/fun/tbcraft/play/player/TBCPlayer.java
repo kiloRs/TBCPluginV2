@@ -26,6 +26,9 @@ public class TBCPlayer{
             TBCPlugin.callEmergency("Bad UUID for TBCPlayer");
             return;
         }
+        if ( fullyLoaded ){
+            TBCPlugin.log("Player Already Loaded: " + Bukkit.getPlayer(id));
+        }
         this.storedPlayer = Bukkit.getPlayer(id);
         this.mmoPlayerData = MMOPlayerData.get(id);
         this.ttPlayerData = PlayerData.get(this.storedPlayer);
@@ -35,6 +38,9 @@ public class TBCPlayer{
         this.fullyLoaded = true;
     }
 
+    public void setFullyLoaded(boolean l){
+        this.fullyLoaded=l;
+    }
     public User getDatabasePlayer ( ) {
         return databasePlayer;
     }
