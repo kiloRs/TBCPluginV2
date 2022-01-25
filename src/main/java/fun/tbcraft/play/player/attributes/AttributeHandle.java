@@ -30,6 +30,14 @@ public abstract class AttributeHandle{
         this.actual = playerData.getAttributes().getInstance(MMOCore.plugin.attributeManager.get(instanced.getId()));
 
     }
+    public void testCast(){
+        //This is the actual test skill I am going to attempt to try.
+        if ( player.isOnline() ){
+            if ( cast("example") ) {
+                player.sendRawMessage(ColorString.get("&aSuccessfully Casted Skill!"));
+            }
+        }
+    }
 
     /**
      * A simple test method for casting. This has not been setup yet.
