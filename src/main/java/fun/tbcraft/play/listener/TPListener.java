@@ -2,7 +2,7 @@ package fun.tbcraft.play.listener;
 
 import fun.tbcraft.play.TBCPlugin;
 import fun.tbcraft.play.player.TBCPlayer;
-import fun.tbcraft.play.utils.PlayerClassType;
+import fun.tbcraft.play.utils.ColoredWords;
 import net.Indyuce.mmocore.api.event.PlayerResourceUpdateEvent;
 import net.Indyuce.mmocore.api.player.PlayerData;
 import org.bukkit.entity.Player;
@@ -26,7 +26,8 @@ public class TPListener implements BaseListener{
 
         final var distance = from.distanceSquared(to);
 
-        final var usedStellium = ( distance * multiplier ) / max;
+        final var basePath = "Teleportation.Distance.Base";
+        var usedStellium = distance * ( TBCPlugin.getSettings().exists(basePath)?TBCPlugin.getSettings().getDouble(basePath):1);
 
         final var data = PlayerData.get(player);
 
@@ -35,17 +36,21 @@ public class TPListener implements BaseListener{
         if ( name==null||name.isEmpty() ){
             name = player.getDisplayName();
         }
-        if ( tbcPlayer.getPlayerClassType()== PlayerClassType.MAGE ){
+        final var classTypeHolder = tbcPlayer.getPlayerClassType();
+        usedStellium = usedStellium * classTypeHolder.getStelliumMultiplier();
 
-        }
-
+        String errrorWording = "";
         if ( data.getStellium() < usedStellium ){
             e.setCancelled(true);
             TBCPlugin.errorLog("Player: " + name);
+            errrorWording = "&cYou cannot teleport because you only have " + data.getStellium() + "/" + usedStellium;
+            player.sendRawMessage(ColoredWords.get(errrorWording));
         }
         else {
+            errrorWording = "&aSuccessfully Teleported!";
             data.giveStellium(-usedStellium, PlayerResourceUpdateEvent.UpdateReason.OTHER);
             TBCPlugin.log("Removed Stellium from " + name + " as amount: " + usedStellium);
+            player.sendRawMessage(ColoredWords.get(errrorWording));
         }
 
     }
