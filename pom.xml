@@ -6,7 +6,7 @@
 
     <groupId>fun.tbcraft.play</groupId>
     <artifactId>TheBestChoiceMC</artifactId>
-    <version>1.0.3</version>
+    <version>1.0.4</version>
 
     <properties>
         <maven.compiler.source>17</maven.compiler.source>
@@ -120,10 +120,15 @@
         <dependency>
             <groupId>org.maxgamer</groupId>
             <artifactId>QuickShop</artifactId>
-            <version>5.1.0.2</version>
+            <version>5.1.0.4-SNAPSHOT</version>
             <scope>provided</scope>
         </dependency>
-
+        <dependency>
+            <groupId>com.github.Rosstail</groupId>
+            <artifactId>karma</artifactId>
+            <version>1.9.5</version> <!--Minimum 1.7.2-->
+            <scope>provided</scope>
+        </dependency>
         <dependency>
             <groupId>net.luckperms</groupId>
             <artifactId>api</artifactId>
@@ -189,7 +194,7 @@
         <dependency>
             <groupId>com.sk89q.worldedit</groupId>
             <artifactId>worldedit-bukkit</artifactId>
-            <version>7.2.8</version>
+            <version>7.2.9-SNAPSHOT</version>
             <scope>provided</scope>
         </dependency>
 
@@ -197,7 +202,7 @@
         <dependency>
             <groupId>com.sk89q.worldedit</groupId>
             <artifactId>worldedit-core</artifactId>
-            <version>7.2.8</version>
+            <version>7.2.9-SNAPSHOT</version>
             <scope>provided</scope>
         </dependency>
         <dependency>

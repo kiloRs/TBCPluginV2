@@ -3,12 +3,16 @@ package fun.tbcraft.play;
 import com.palmergames.bukkit.towny.TownyAPI;
 import fun.tbcraft.play.commands.MainCommands;
 import fun.tbcraft.play.hooks.mmoitems.NewStats;
+import fun.tbcraft.play.player.RegenerationItem;
 import fun.tbcraft.play.utils.log.TBCFileLogger;
+import io.lumine.mythic.lib.api.player.EquipmentSlot;
 import io.lumine.mythic.utils.chat.ColorString;
 import io.papermc.lib.PaperLib;
 import me.devtec.theapi.configapi.Config;
 import me.devtec.theapi.utils.datakeeper.DataType;
 import net.Indyuce.mmoitems.MMOItems;
+import net.Indyuce.mmoitems.api.Type;
+import net.Indyuce.mmoitems.api.TypeSet;
 import org.bukkit.Bukkit;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
@@ -113,6 +117,11 @@ public class TBCPlugin extends JavaPlugin{
 
         if ( MMOItems.plugin.isEnabled() ) {
             //Hook for stats!
+            final var type = new Type(TypeSet.OFFHAND,"Passive",false, EquipmentSlot.BOTH_HANDS,true);
+            //Registers New Type
+            MMOItems.plugin.getTypes().register(type);
+
+            MMOItems.plugin.getTemplates().registerTemplate(new RegenerationItem(type , "Regen_Totem"));
             log("MMOItems Hooked!");
         }
             log("Completed TBCv2 Startup!");

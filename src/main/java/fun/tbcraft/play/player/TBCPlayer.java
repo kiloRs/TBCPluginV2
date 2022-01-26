@@ -3,9 +3,12 @@ package fun.tbcraft.play.player;
 import eu.asangarin.tt.player.PlayerData;
 import fun.tbcraft.play.TBCPlugin;
 import fun.tbcraft.play.utils.BodyPartsAPI;
+import fun.tbcraft.play.utils.PlayerClassType;
 import io.lumine.mythic.lib.api.player.MMOPlayerData;
+import io.lumine.mythic.lib.api.util.EnumUtils;
 import me.devtec.theapi.TheAPI;
 import me.devtec.theapi.utils.datakeeper.User;
+import net.Indyuce.mmocore.api.player.profess.PlayerClass;
 import org.bukkit.Bukkit;
 import org.bukkit.Location;
 import org.bukkit.entity.Player;
@@ -20,7 +23,14 @@ public class TBCPlayer{
     private net.Indyuce.mmoitems.api.player.PlayerData itemsPlayerData;
     private User databasePlayer;
     private boolean fullyLoaded = false;
+    private PlayerClassType classType;
 
+    public static TBCPlayer get(UUID uuid){
+        return new TBCPlayer(uuid);
+    }
+    public static TBCPlayer get(Player p){
+        return new TBCPlayer(p.getUniqueId());
+    }
     public TBCPlayer(UUID id){
         if ( Bukkit.getPlayer(id)==null ){
             TBCPlugin.callEmergency("Bad UUID for TBCPlayer");
@@ -36,6 +46,8 @@ public class TBCPlayer{
         this.itemsPlayerData = net.Indyuce.mmoitems.api.player.PlayerData.get(id);
         this.databasePlayer = TheAPI.getUser(id);
         this.fullyLoaded = true;
+        this.classType = EnumUtils.getIfPresent(PlayerClassType.class , corePlayerData.getProfess().getId()).orElseThrow(( ) -> new RuntimeException("Bad Class Type Data"));
+
     }
 
     public void setFullyLoaded(boolean l){
@@ -61,6 +73,12 @@ public class TBCPlayer{
         return mmoPlayerData;
     }
 
+    public PlayerClass getPlayerClass(){
+        return classType.get();
+    }
+    public PlayerClassType getPlayerClassType(){
+        return classType;
+    }
     public boolean isOperatorStatus(){
         return storedPlayer.isOp()||storedPlayer.hasPermission("Operator");
     }
