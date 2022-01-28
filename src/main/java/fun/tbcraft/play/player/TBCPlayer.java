@@ -89,4 +89,8 @@ public class TBCPlayer{
     public boolean isFullyLoaded ( ) {
         return fullyLoaded;
     }
+     public boolean inDungeon(){
+        return false;
+     }
+
 }
