@@ -5,6 +5,7 @@ import fun.tbcraft.play.commands.MainCommands;
 import fun.tbcraft.play.hooks.mmoitems.NewStats;
 import fun.tbcraft.play.player.RegenerationItem;
 import fun.tbcraft.play.utils.log.TBCFileLogger;
+import fun.tbcraft.play.utils.log.TBCLogger;
 import io.lumine.mythic.lib.api.player.EquipmentSlot;
 import io.lumine.mythic.utils.chat.ColorString;
 import io.papermc.lib.PaperLib;

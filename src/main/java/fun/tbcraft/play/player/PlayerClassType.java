@@ -1,4 +1,4 @@
-package fun.tbcraft.play.utils;
+package fun.tbcraft.play.player;
 
 import fun.tbcraft.play.TBCPlugin;
 import net.Indyuce.mmocore.MMOCore;
@@ -13,9 +13,15 @@ public enum PlayerClassType{
     private final double manaMultiplier;
 
     PlayerClassType(String id){
+        final var s = TBCPlugin.getSettings();
+        if ( !s.exists(id) ){
+            s.addDefault(id + ".Stellium",1);
+            s.addDefault(id + ".Mana",1);
+            s.save();
+        }
         this.id = Validate.notNull(id,"Bad Class Name");
-        this.stelliumMultiplier = TBCPlugin.getSettings().exists(id + ".Stellium")?TBCPlugin.getSettings().getDouble(id + ".Stellium"):1;
-        this.manaMultiplier = TBCPlugin.getSettings().exists(id + ".Mana")?TBCPlugin.getSettings().getDouble(id + ".Mana"):1;
+        this.stelliumMultiplier = s.exists(id + ".Stellium")? s.getDouble(id + ".Stellium"):1;
+        this.manaMultiplier = s.exists(id + ".Mana")? s.getDouble(id + ".Mana"):1;
     }
     public boolean hasSettings(){
         return TBCPlugin.getSettings().isSection(id);

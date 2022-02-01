@@ -1,5 +1,6 @@
-package fun.tbcraft.play;
+package fun.tbcraft.play.utils;
 
+import fun.tbcraft.play.TBCPlugin;
 import org.apache.commons.lang3.Validate;
 import org.bukkit.Bukkit;
 import org.bukkit.command.CommandExecutor;

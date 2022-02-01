@@ -3,7 +3,6 @@ package fun.tbcraft.play.player;
 import eu.asangarin.tt.player.PlayerData;
 import fun.tbcraft.play.TBCPlugin;
 import fun.tbcraft.play.utils.BodyPartsAPI;
-import fun.tbcraft.play.utils.PlayerClassType;
 import io.lumine.mythic.lib.api.player.MMOPlayerData;
 import io.lumine.mythic.lib.api.util.EnumUtils;
 import me.devtec.theapi.TheAPI;

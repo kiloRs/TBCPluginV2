@@ -1,11 +1,10 @@
 package fun.tbcraft.play.listener;
 
 import com.bergerkiller.bukkit.common.utils.PlayerUtil;
-import com.destroystokyo.paper.event.entity.ThrownEggHatchEvent;
 import fun.tbcraft.play.TBCPlugin;
-import fun.tbcraft.play.TBCProperties;
-import fun.tbcraft.play.TBCTimeHandler;
-import fun.tbcraft.play.utils.ColoredWords;
+import fun.tbcraft.play.utils.TBCProperties;
+import fun.tbcraft.play.utils.TBCTimeHandler;
+import fun.tbcraft.play.utils.ColorWords;
 import io.lumine.mythic.utils.chat.ColorString;
 import net.Indyuce.mmocore.api.ConfigFile;
 import org.apache.commons.lang3.Validate;
@@ -15,6 +14,7 @@ import org.bukkit.block.BlockFace;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.EventPriority;
+import org.bukkit.event.player.PlayerGameModeChangeEvent;
 import org.bukkit.event.player.PlayerInteractEvent;
 import org.bukkit.event.player.PlayerJoinEvent;
 import org.bukkit.event.player.PlayerQuitEvent;
@@ -23,7 +23,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 
-public abstract class StartupListener implements BaseListener{
+public class StartupListener implements BaseListener{
     private static final List<Player> onlinePlayers = new ArrayList<>();
     @EventHandler
     public void onPlayerJoin(PlayerJoinEvent e){
@@ -59,11 +59,24 @@ public abstract class StartupListener implements BaseListener{
     @EventHandler
     public void onLeave(PlayerQuitEvent e){
         final var p = e.getPlayer();
-
-
         onlinePlayers.remove(p);
         TBCPlugin.debug("Removed " + p.getName() + " from Online");
 
+    }
+    @EventHandler
+    public void on(PlayerGameModeChangeEvent e){
+        final var newGameMode = e.getNewGameMode();
+
+        if ( newGameMode==GameMode.CREATIVE ){
+            final var player = e.getPlayer();
+            if ( onlinePlayers.contains(player) ){
+                if ( !player.hasPermission("creative.mode") ){
+                    e.setCancelled(true);
+                }
+                return;
+            }
+            throw new RuntimeException("Unloaded Playerdata...");
+        }
     }
     @EventHandler(priority = EventPriority.HIGHEST)
     public void onLimeResourcePack(PlayerInteractEvent e) {
@@ -79,11 +92,11 @@ public abstract class StartupListener implements BaseListener{
         }
         if ( player.isOp() ) {
             if ( player.getGameMode() == GameMode.SPECTATOR ) {
-                player.sendRawMessage(ColoredWords.get("&4Bad Gamemode"));
+                player.sendRawMessage(ColorWords.get("&4Bad Gamemode"));
                 return;
             }
             if ( player.getGameMode() == GameMode.CREATIVE ) {
-                player.sendRawMessage(ColoredWords.get("&4Bad Gamemode"));
+                player.sendRawMessage(ColorWords.get("&4Bad Gamemode"));
                 return;
             }
             if ( e.hasBlock() ) {
@@ -101,19 +114,16 @@ public abstract class StartupListener implements BaseListener{
                 }
                 if ( clickedBlock.getType()== Material.ENCHANTING_TABLE ) {
                     e.setCancelled(true);
-                    player.sendRawMessage(ColoredWords.get("&cYou cannot enchant yet."));
+                    player.sendRawMessage(ColorWords.get("&cYou cannot enchant yet."));
                 }
             }
             ;
         }
     }
 
-    @EventHandler
-    public void onThrownEgg(ThrownEggHatchEvent e){
-        final var egg = e.getEgg();
-        final var hatchingType = e.getHatchingType();
 
-
+    @Override
+    public String getName ( ) {
+        return "STARTUP";
     }
-
 }

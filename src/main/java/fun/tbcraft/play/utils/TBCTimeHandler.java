@@ -1,4 +1,4 @@
-package fun.tbcraft.play;
+package fun.tbcraft.play.utils;
 
 import java.time.Instant;
 import java.time.LocalDateTime;

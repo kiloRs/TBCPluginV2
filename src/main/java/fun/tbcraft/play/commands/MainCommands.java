@@ -5,18 +5,22 @@ import io.lumine.mythic.utils.chat.ColorString;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
+import org.bukkit.command.TabExecutor;
 import org.bukkit.entity.Player;
+import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 
-public class MainCommands implements CommandExecutor{
+import java.util.ArrayList;
+import java.util.List;
+
+public class MainCommands implements CommandExecutor, TabExecutor{
+    private static List<String> t = new ArrayList<>();
     @Override
     public boolean onCommand (CommandSender sender , Command command , String label , String[] args) {
         if ( !( sender instanceof Player player ) ){
             return false;
         }
 
-        if ( label.equals("run") && args.length == 1 && args[0].equalsIgnoreCase("task") ){
-            player.sendRawMessage(ColorString.get("&cAttempting to run...."));
-        }
         if ( !command.isRegistered() ){
             ( (Player) sender ).sendRawMessage(ColorString.get("&cInvalid Command Registration!"));
             return false;
@@ -41,5 +45,19 @@ public class MainCommands implements CommandExecutor{
             return true;
         }
         return false;
+    }
+
+    @Override
+    public @Nullable List<String> onTabComplete (@NotNull CommandSender commandSender , @NotNull Command command , @NotNull String s , @NotNull String[] strings) {
+        if ( command.getUsage().equalsIgnoreCase("tbc") ){
+            t.clear();
+            t.add("Reload");
+            t.add("Load");
+            t.add("Save");
+            return t;
+        }
+        else {
+            return new ArrayList<>();
+        }
     }
 }

@@ -1,4 +1,4 @@
-package fun.tbcraft.play;
+package fun.tbcraft.play.utils;
 
 import org.bukkit.entity.Player;
 

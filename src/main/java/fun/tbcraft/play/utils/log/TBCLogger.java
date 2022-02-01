@@ -1,4 +1,6 @@
-package fun.tbcraft.play;
+package fun.tbcraft.play.utils.log;
+
+import fun.tbcraft.play.TBCPlugin;
 
 import java.util.logging.Logger;
 
