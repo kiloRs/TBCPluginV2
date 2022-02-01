@@ -93,4 +93,8 @@ public class TBCPlayer{
         return false;
      }
 
+     public Player getStoredPlayer(){
+        return storedPlayer;
+     }
+
 }

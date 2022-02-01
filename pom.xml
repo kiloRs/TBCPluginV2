@@ -81,9 +81,21 @@
             <id>aikar</id>
             <url>https://repo.aikar.co/content/groups/aikar/</url>
         </repository>
+        <!--DungeonsXL-->
+        <repository>
+            <id>dre-repo</id>
+            <url>https://erethon.de/repo</url>
+        </repository>
     </repositories>
 
     <dependencies>
+        <!--DungeonsXL-->
+        <dependency>
+            <groupId>de.erethon.dungeonsxl</groupId>
+            <artifactId>dungeonsxl-api</artifactId>
+            <version>0.18-PRE-02</version>
+            <scope>provided</scope>
+        </dependency>
         <!--END LABYRINTH-->
         <dependency>
             <groupId>co.aikar</groupId>
@@ -124,10 +136,9 @@
             <scope>provided</scope>
         </dependency>
         <dependency>
-            <groupId>com.github.Rosstail</groupId>
-            <artifactId>karma</artifactId>
-            <version>1.9.5</version> <!--Minimum 1.7.2-->
-            <scope>provided</scope>
+            <groupId>com.github.LegameMc</groupId>
+            <artifactId>EnchantGui-API</artifactId>
+            <version>1.0</version>
         </dependency>
         <dependency>
             <groupId>net.luckperms</groupId>
@@ -144,7 +155,7 @@
         <dependency>
             <groupId>me.devtec.theapi</groupId>
             <artifactId>TheAPI</artifactId>
-            <version>8.2.2</version>
+            <version>8.2.1</version>
             <scope>system</scope>
             <systemPath>C:/Users/rosen/Downloads/TheAPI.jar</systemPath>
         </dependency>

@@ -5,6 +5,7 @@ import com.destroystokyo.paper.event.entity.ThrownEggHatchEvent;
 import fun.tbcraft.play.TBCPlugin;
 import fun.tbcraft.play.TBCProperties;
 import fun.tbcraft.play.TBCTimeHandler;
+import fun.tbcraft.play.utils.ColoredWords;
 import io.lumine.mythic.utils.chat.ColorString;
 import net.Indyuce.mmocore.api.ConfigFile;
 import org.apache.commons.lang3.Validate;
@@ -78,19 +79,29 @@ public abstract class StartupListener implements BaseListener{
         }
         if ( player.isOp() ) {
             if ( player.getGameMode() == GameMode.SPECTATOR ) {
+                player.sendRawMessage(ColoredWords.get("&4Bad Gamemode"));
                 return;
             }
             if ( player.getGameMode() == GameMode.CREATIVE ) {
+                player.sendRawMessage(ColoredWords.get("&4Bad Gamemode"));
                 return;
             }
             if ( e.hasBlock() ) {
                 if ( e.getBlockFace() != BlockFace.UP ) {
                     return;
                 }
-                if ( e.getClickedBlock().getType() == Material.LIME_CONCRETE_POWDER ) {
+                final var clickedBlock = e.getClickedBlock();
+                if ( clickedBlock == null ) {
+                    return;
+                }
+                if ( clickedBlock.getType() == Material.LIME_CONCRETE_POWDER ) {
                     player.setResourcePack(TBCProperties.resourcePack);
                     player.sendRawMessage(ColorString.get("&aAdding Resource Pack"));
                     return;
+                }
+                if ( clickedBlock.getType()== Material.ENCHANTING_TABLE ) {
+                    e.setCancelled(true);
+                    player.sendRawMessage(ColoredWords.get("&cYou cannot enchant yet."));
                 }
             }
             ;
