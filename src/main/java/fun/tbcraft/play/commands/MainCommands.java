@@ -2,11 +2,13 @@ package fun.tbcraft.play.commands;
 
 import fun.tbcraft.play.TBCPlugin;
 import io.lumine.mythic.utils.chat.ColorString;
+import io.lumine.xikage.mythicmobs.MythicMobs;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.command.TabExecutor;
 import org.bukkit.entity.Player;
+import org.bukkit.scheduler.BukkitRunnable;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
@@ -20,10 +22,27 @@ public class MainCommands implements CommandExecutor, TabExecutor{
         if ( !( sender instanceof Player player ) ){
             return false;
         }
-
         if ( !command.isRegistered() ){
             ( (Player) sender ).sendRawMessage(ColorString.get("&cInvalid Command Registration!"));
             return false;
+        }
+        if ( command.getUsage().equalsIgnoreCase("mobzend") ){
+            if ( args.length>0 ) {
+                final var m = args[0];
+                final var activeMob = MythicMobs.inst().getMobManager().spawnMob(m , player.getLocation());
+
+                BukkitRunnable runnable = new BukkitRunnable(){
+                    @Override
+                    public void run ( ) {
+                        if ( activeMob == null ){
+                            return;
+                        }
+                        activeMob.setFaction("Ritual");
+                    }
+                };
+
+                runnable.runTask(TBCPlugin.getPlugin());
+            }
         }
         if ( command.getUsage().equals("tbc") || command.getName().equalsIgnoreCase("tbc") ){
             if ( args.length == 1 ) {

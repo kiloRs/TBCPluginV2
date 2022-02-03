@@ -2,8 +2,7 @@ package fun.tbcraft.play;
 
 import com.palmergames.bukkit.towny.TownyAPI;
 import fun.tbcraft.play.commands.MainCommands;
-import fun.tbcraft.play.hooks.mmoitems.NewStats;
-import fun.tbcraft.play.player.RegenerationItem;
+
 import fun.tbcraft.play.utils.log.TBCFileLogger;
 import fun.tbcraft.play.utils.log.TBCLogger;
 import io.lumine.mythic.lib.api.player.EquipmentSlot;
@@ -65,12 +64,6 @@ public class TBCPlugin extends JavaPlugin{
     public void onEnable ( ) {
         plugin = this;
         //Loading Main Stat Below.
-        try {
-            MMOItems.plugin.getStats().register(NewStats.getModelLevelStat());
-        } catch (Exception e) {
-            e.printStackTrace();
-            TBCPlugin.callEmergency("Berry Bad Stat!");
-        }
 
 
         if ( config == null ){
@@ -121,8 +114,6 @@ public class TBCPlugin extends JavaPlugin{
             final var type = new Type(TypeSet.OFFHAND,"Passive",false, EquipmentSlot.BOTH_HANDS,true);
             //Registers New Type
             MMOItems.plugin.getTypes().register(type);
-
-            MMOItems.plugin.getTemplates().registerTemplate(new RegenerationItem(type , "Regen_Totem"));
             log("MMOItems Hooked!");
         }
             log("Completed TBCv2 Startup!");

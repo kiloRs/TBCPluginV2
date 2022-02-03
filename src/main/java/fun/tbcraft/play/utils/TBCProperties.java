@@ -17,4 +17,8 @@ public class TBCProperties{
     public static boolean hasPack(Player p){
         return !resourcePack.isEmpty();
     }
+
+    public static boolean isInDifficulty(String difficulty){
+        return TBCProperties.difficulty.equalsIgnoreCase(difficulty);
+    }
 }
