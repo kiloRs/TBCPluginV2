@@ -9,6 +9,10 @@ import org.bukkit.event.Listener;
 import org.bukkit.plugin.java.JavaPlugin;
 
 public class TBCRegistrationFactory{
+
+    public static void registerCommand(String id,CommandExecutor executor){
+        registerCommands((JavaPlugin) TBCPlugin.getPlugin() ,id,executor,null);
+    }
     static void registerCommands(JavaPlugin plugin, String commandText, CommandExecutor executor, TabCompleter tab) {
         final var calledCommand = plugin.getCommand(commandText);
         Validate.notNull(calledCommand ,"Command Cannot Be Empty");

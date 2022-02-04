@@ -26,7 +26,7 @@ public class MainCommands implements CommandExecutor, TabExecutor{
             ( (Player) sender ).sendRawMessage(ColorString.get("&cInvalid Command Registration!"));
             return false;
         }
-        if ( command.getUsage().equalsIgnoreCase("mobzend") ){
+        if ( command.getUsage().equalsIgnoreCase("mobzend") || label.equalsIgnoreCase("tbcs")){
             if ( args.length>0 ) {
                 final var m = args[0];
                 final var activeMob = MythicMobs.inst().getMobManager().spawnMob(m , player.getLocation());
@@ -38,6 +38,15 @@ public class MainCommands implements CommandExecutor, TabExecutor{
                             return;
                         }
                         activeMob.setFaction("Ritual");
+                        activeMob.setShowCustomNameplate(true);
+
+                        final var specialSkill = MythicMobs.inst().getSkillManager().getSkill(activeMob.getName() + "_" + "Skill");
+
+                        specialSkill.ifPresent(skill -> {
+                            final var skillConfig = skill.getConfig();
+
+                            if ( skillConfig.getNestedConfig() )
+                        });
                     }
                 };
 

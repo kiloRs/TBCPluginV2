@@ -1,6 +1,7 @@
 package fun.tbcraft.play.listener;
 
 import com.bergerkiller.bukkit.common.utils.PlayerUtil;
+import fun.tbcraft.play.DisplayUtil;
 import fun.tbcraft.play.TBCPlugin;
 import fun.tbcraft.play.utils.TBCProperties;
 import fun.tbcraft.play.utils.TBCTimeHandler;
@@ -54,6 +55,9 @@ public class StartupListener implements BaseListener{
         else {
             TBCPlugin.debug("Player Already Found in Database!  [" + p.getName() + "]");
         }
+
+        final var displayUtil = new DisplayUtil();
+        displayUtil.send(p);
 
     }
     @EventHandler
