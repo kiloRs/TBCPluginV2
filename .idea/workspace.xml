@@ -9,7 +9,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="7ff34517-188c-4340-a395-beea62381f55" name="Changes" comment="Fixes" />
+    <list default="true" id="7ff34517-188c-4340-a395-beea62381f55" name="Changes" comment="Updated Other Player Support" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -245,7 +245,28 @@
       <option name="project" value="LOCAL" />
       <updated>1644051420571</updated>
     </task>
-    <option name="localTasksCounter" value="24" />
+    <task id="LOCAL-00024" summary="Fixes">
+      <created>1644051597252</created>
+      <option name="number" value="00024" />
+      <option name="presentableId" value="LOCAL-00024" />
+      <option name="project" value="LOCAL" />
+      <updated>1644051597252</updated>
+    </task>
+    <task id="LOCAL-00025" summary="Changed to HEX support.">
+      <created>1644051996901</created>
+      <option name="number" value="00025" />
+      <option name="presentableId" value="LOCAL-00025" />
+      <option name="project" value="LOCAL" />
+      <updated>1644051996901</updated>
+    </task>
+    <task id="LOCAL-00026" summary="Updated Other Player Support">
+      <created>1644052388739</created>
+      <option name="number" value="00026" />
+      <option name="presentableId" value="LOCAL-00026" />
+      <option name="project" value="LOCAL" />
+      <updated>1644052388739</updated>
+    </task>
+    <option name="localTasksCounter" value="27" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -280,6 +301,8 @@
     <MESSAGE value="Added Command / POM Details" />
     <MESSAGE value="Rebase" />
     <MESSAGE value="Fixes" />
-    <option name="LAST_COMMIT_MESSAGE" value="Fixes" />
+    <MESSAGE value="Changed to HEX support." />
+    <MESSAGE value="Updated Other Player Support" />
+    <option name="LAST_COMMIT_MESSAGE" value="Updated Other Player Support" />
   </component>
 </project>
