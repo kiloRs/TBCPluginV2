@@ -2,7 +2,7 @@ package fun.tbcraft.play;
 
 import com.palmergames.bukkit.towny.TownyAPI;
 import fun.tbcraft.play.commands.MainCommands;
-
+import fun.tbcraft.play.commands.WorldCommand;
 import fun.tbcraft.play.utils.log.TBCFileLogger;
 import fun.tbcraft.play.utils.log.TBCLogger;
 import io.lumine.mythic.lib.api.player.EquipmentSlot;

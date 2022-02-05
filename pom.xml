@@ -6,7 +6,11 @@
 
     <groupId>fun.tbcraft.play</groupId>
     <artifactId>TheBestChoiceMC</artifactId>
+    <packaging>pom</packaging>
     <version>1.0.4</version>
+    <modules>
+        <module>v3</module>
+    </modules>
 
     <properties>
         <maven.compiler.source>17</maven.compiler.source>
