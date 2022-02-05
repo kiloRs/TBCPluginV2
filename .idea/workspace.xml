@@ -1,0 +1,274 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ArtifactsWorkspaceSettings">
+    <artifacts-to-build>
+      <artifact name="TBCv2" />
+    </artifacts-to-build>
+  </component>
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="7ff34517-188c-4340-a395-beea62381f55" name="Changes" comment="Rebase" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="CodeInsightWorkspaceSettings">
+    <option name="optimizeImportsOnTheFly" value="true" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Enum" />
+        <option value="Interface" />
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+    <option name="UPDATE_TYPE" value="REBASE" />
+  </component>
+  <component name="GitSEFilterConfiguration">
+    <file-type-list>
+      <filtered-out-file-type name="LOCAL_BRANCH" />
+      <filtered-out-file-type name="REMOTE_BRANCH" />
+      <filtered-out-file-type name="TAG" />
+      <filtered-out-file-type name="COMMIT_BY_MESSAGE" />
+    </file-type-list>
+  </component>
+  <component name="HighlightingSettingsPerFile">
+    <setting file="jar://$MAVEN_REPOSITORY$/me/neznamy/tab-api/3.0.1/tab-api-3.0.1-sources.jar!/me/neznamy/tab/api/placeholder/PlaceholderManager.java" root0="SKIP_INSPECTION" />
+    <setting file="jar://$MAVEN_REPOSITORY$/me/neznamy/tab-api/3.0.1/tab-api-3.0.1-sources.jar!/me/neznamy/tab/api/TabFeature.java" root0="SKIP_INSPECTION" />
+    <setting file="file://$PROJECT_DIR$/../mmocore/src/main/java/net/Indyuce/mmocore/listener/WaypointsListener.java" root0="SKIP_INSPECTION" />
+    <setting file="jar://$MAVEN_REPOSITORY$/me/neznamy/tab-api/3.0.1/tab-api-3.0.1-sources.jar!/me/neznamy/tab/api/team/TeamManager.java" root0="SKIP_INSPECTION" />
+    <setting file="jar://$MAVEN_REPOSITORY$/me/neznamy/tab-api/3.0.1/tab-api-3.0.1-sources.jar!/me/neznamy/tab/api/TabAPI.java" root0="SKIP_INSPECTION" />
+  </component>
+  <component name="ProjectId" id="23eeDHrPdxL5Y6K2436B2OXN1it" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="NEW_TOOLWINDOW_STRIPE_DEFAULTS" value="true" />
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="jdk.selected.JAVA_MODULE" value="17" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/src" />
+    <property name="project.structure.last.edited" value="Modules" />
+    <property name="project.structure.proportion" value="0.31434384" />
+    <property name="project.structure.side.proportion" value="0.66628957" />
+    <property name="run.code.analysis.last.selected.profile" value="pProject Default" />
+    <property name="settings.editor.selected.configurable" value="reference.settingsdialog.IDE.editor.colors.Java" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CreateClassDialog.RecentsKey">
+      <recent name="fun.tbcraft.play.dungeons" />
+      <recent name="fun.tbcraft.play" />
+      <recent name="fun.tbcraft.play.player.attributes" />
+      <recent name="fun.tbcraft.play.listener" />
+    </key>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="7ff34517-188c-4340-a395-beea62381f55" name="Changes" comment="" />
+      <created>1642098861966</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1642098861966</updated>
+    </task>
+    <task id="LOCAL-00001" summary="Changed Exception">
+      <created>1642996076604</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1642996076604</updated>
+    </task>
+    <task id="LOCAL-00002" summary="Changed Exception">
+      <created>1642996702498</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1642996702498</updated>
+    </task>
+    <task id="LOCAL-00003" summary="Added local settings">
+      <created>1643075019037</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1643075019038</updated>
+    </task>
+    <task id="LOCAL-00004" summary="Added local settings">
+      <created>1643075115717</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1643075115717</updated>
+    </task>
+    <task id="LOCAL-00005" summary="Fixed NPE">
+      <created>1643075197550</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1643075197550</updated>
+    </task>
+    <task id="LOCAL-00006" summary="Added Test Skill">
+      <created>1643076387926</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1643076387926</updated>
+    </task>
+    <task id="LOCAL-00007" summary="Added Actual Test">
+      <created>1643076635422</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1643076635422</updated>
+    </task>
+    <task id="LOCAL-00008" summary="Added Various Utils&#10;Added PlayerClassType for selecting pre-defined class types.">
+      <created>1643217290965</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1643217290965</updated>
+    </task>
+    <task id="LOCAL-00009" summary="Added Various Utils&#10;Added PlayerClassType for selecting pre-defined class types.">
+      <created>1643217714128</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1643217714128</updated>
+    </task>
+    <task id="LOCAL-00010" summary="Fixed Stellium Use For Alpha Testing">
+      <created>1643219278890</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1643219278890</updated>
+    </task>
+    <task id="LOCAL-00011" summary="Added Basic Dungeon Crawling Player Data">
+      <created>1643348522483</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1643348522483</updated>
+    </task>
+    <task id="LOCAL-00012" summary="Basic Changes">
+      <created>1643691129002</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1643691129002</updated>
+    </task>
+    <task id="LOCAL-00013" summary="Updated things, removed bad systems for further work">
+      <created>1643741907103</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1643741907103</updated>
+    </task>
+    <task id="LOCAL-00014" summary="Updated things, removed bad systems for further work">
+      <created>1643742095786</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1643742095786</updated>
+    </task>
+    <task id="LOCAL-00015" summary="Dumb Shti Im sure...">
+      <created>1643852214878</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1643852214878</updated>
+    </task>
+    <task id="LOCAL-00016" summary="Added DisplayUtil">
+      <created>1644009790069</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1644009790069</updated>
+    </task>
+    <task id="LOCAL-00017" summary="Updated Listener to NullCheck">
+      <created>1644020473346</created>
+      <option name="number" value="00017" />
+      <option name="presentableId" value="LOCAL-00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1644020473346</updated>
+    </task>
+    <task id="LOCAL-00018" summary="Added Command / POM Details">
+      <created>1644050239845</created>
+      <option name="number" value="00018" />
+      <option name="presentableId" value="LOCAL-00018" />
+      <option name="project" value="LOCAL" />
+      <updated>1644050239845</updated>
+    </task>
+    <task id="LOCAL-00019" summary="Added Command / POM Details">
+      <created>1644050524422</created>
+      <option name="number" value="00019" />
+      <option name="presentableId" value="LOCAL-00019" />
+      <option name="project" value="LOCAL" />
+      <updated>1644050524422</updated>
+    </task>
+    <task id="LOCAL-00020" summary="Rebase">
+      <created>1644050600830</created>
+      <option name="number" value="00020" />
+      <option name="presentableId" value="LOCAL-00020" />
+      <option name="project" value="LOCAL" />
+      <updated>1644050600830</updated>
+    </task>
+    <task id="LOCAL-00021" summary="Rebase">
+      <created>1644050645429</created>
+      <option name="number" value="00021" />
+      <option name="presentableId" value="LOCAL-00021" />
+      <option name="project" value="LOCAL" />
+      <updated>1644050645429</updated>
+    </task>
+    <task id="LOCAL-00022" summary="Rebase">
+      <created>1644050882876</created>
+      <option name="number" value="00022" />
+      <option name="presentableId" value="LOCAL-00022" />
+      <option name="project" value="LOCAL" />
+      <updated>1644050882876</updated>
+    </task>
+    <option name="localTasksCounter" value="23" />
+    <servers />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+    <option name="oldMeFiltersMigrated" value="true" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="Initial Loading" />
+    <MESSAGE value="Changed Exception" />
+    <MESSAGE value="Updates" />
+    <MESSAGE value="Added local settings" />
+    <MESSAGE value="Fixed NPE" />
+    <MESSAGE value="Added Test Skill" />
+    <MESSAGE value="Added Actual Test" />
+    <MESSAGE value="Added Various Utils&#10;Added PlayerClassType for selecting pre-defined class types." />
+    <MESSAGE value="Fixed Stellium Use For Alpha Testing" />
+    <MESSAGE value="Waypoint Detection" />
+    <MESSAGE value="Added Basic Dungeon Crawling Player Data" />
+    <MESSAGE value="Basic Changes" />
+    <MESSAGE value="Updated things, removed bad systems for further work" />
+    <MESSAGE value="Dumb Shti Im sure..." />
+    <MESSAGE value="Added DisplayUtil" />
+    <MESSAGE value="Updated Listener to NullCheck" />
+    <MESSAGE value="Added Command / POM Details" />
+    <MESSAGE value="Rebase" />
+    <option name="LAST_COMMIT_MESSAGE" value="Rebase" />
+  </component>
+</project>
