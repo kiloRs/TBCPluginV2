@@ -65,6 +65,7 @@ public class TBCPlugin extends JavaPlugin{
         plugin = this;
         //Loading Main Stat Below.
 
+        registerCommands(this, "whereami", new WorldCommand(), new WorldCommand());
 
         if ( config == null ){
             TBCPlugin.config = new Config("TBCPluginV2/config.yml",DataType.YAML);

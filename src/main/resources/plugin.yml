@@ -37,3 +37,6 @@ commands:
     usage: DTBC Start or DTBC Stop
     permission: default
     permission-message: No Permission for this command. Ask Kilo!
+  whereami:
+    aliases:
+      - where
