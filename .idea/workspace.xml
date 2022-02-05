@@ -29,7 +29,6 @@
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
-    <option name="UPDATE_TYPE" value="REBASE" />
   </component>
   <component name="GitSEFilterConfiguration">
     <file-type-list>
@@ -42,9 +41,13 @@
   <component name="HighlightingSettingsPerFile">
     <setting file="jar://$MAVEN_REPOSITORY$/me/neznamy/tab-api/3.0.1/tab-api-3.0.1-sources.jar!/me/neznamy/tab/api/placeholder/PlaceholderManager.java" root0="SKIP_INSPECTION" />
     <setting file="jar://$MAVEN_REPOSITORY$/me/neznamy/tab-api/3.0.1/tab-api-3.0.1-sources.jar!/me/neznamy/tab/api/TabFeature.java" root0="SKIP_INSPECTION" />
+    <setting file="file://$PROJECT_DIR$/src/main/resources/plugin.yml" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/../mmocore/src/main/java/net/Indyuce/mmocore/listener/WaypointsListener.java" root0="SKIP_INSPECTION" />
+    <setting file="file://$PROJECT_DIR$/src/main/java/fun/tbcraft/play/listener/StartupListener.java" root0="SKIP_INSPECTION" />
     <setting file="jar://$MAVEN_REPOSITORY$/me/neznamy/tab-api/3.0.1/tab-api-3.0.1-sources.jar!/me/neznamy/tab/api/team/TeamManager.java" root0="SKIP_INSPECTION" />
+    <setting file="file://$PROJECT_DIR$/src/main/java/fun/tbcraft/play/commands/WorldCommand.java" root0="SKIP_INSPECTION" />
     <setting file="jar://$MAVEN_REPOSITORY$/me/neznamy/tab-api/3.0.1/tab-api-3.0.1-sources.jar!/me/neznamy/tab/api/TabAPI.java" root0="SKIP_INSPECTION" />
+    <setting file="file://$PROJECT_DIR$/src/main/java/fun/tbcraft/play/TBCPlugin.java" root0="SKIP_INSPECTION" />
   </component>
   <component name="ProjectId" id="23eeDHrPdxL5Y6K2436B2OXN1it" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
