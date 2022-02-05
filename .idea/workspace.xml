@@ -9,7 +9,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="7ff34517-188c-4340-a395-beea62381f55" name="Changes" comment="Rebase" />
+    <list default="true" id="7ff34517-188c-4340-a395-beea62381f55" name="Changes" comment="Fixes" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -238,7 +238,14 @@
       <option name="project" value="LOCAL" />
       <updated>1644050882876</updated>
     </task>
-    <option name="localTasksCounter" value="23" />
+    <task id="LOCAL-00023" summary="Fixes">
+      <created>1644051420571</created>
+      <option name="number" value="00023" />
+      <option name="presentableId" value="LOCAL-00023" />
+      <option name="project" value="LOCAL" />
+      <updated>1644051420571</updated>
+    </task>
+    <option name="localTasksCounter" value="24" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -272,6 +279,7 @@
     <MESSAGE value="Updated Listener to NullCheck" />
     <MESSAGE value="Added Command / POM Details" />
     <MESSAGE value="Rebase" />
-    <option name="LAST_COMMIT_MESSAGE" value="Rebase" />
+    <MESSAGE value="Fixes" />
+    <option name="LAST_COMMIT_MESSAGE" value="Fixes" />
   </component>
 </project>
