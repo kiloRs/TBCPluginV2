@@ -27,30 +27,37 @@ public class WorldCommand implements CommandExecutor, TabExecutor{
                 return true;
             }
             if ( args.length == 1 ){
+
+                if ( args[0].startsWith("-") ){
+                    final var wording = args[0].split("-")[1];
+                    if ( wording.equalsIgnoreCase("w") ){
+                        showLocation(send,null,true);
+                    }
+                }
                 final var otherPlayer = Bukkit.getPlayerExact(args[0]);
                 final var nnPl = Validate.notNull(otherPlayer,"Bad Player Name");
 
                 if ( nnPl.isOnline() ){
-                    showLocation(nnPl, send);
+                    showLocation(nnPl, send,false);
                 }
                 else {
                     OfflinePlayer offlinePlayer = nnPl;
-                    showLocation(otherPlayer, send);
+                    showLocation(otherPlayer, send,false);
 
                 }
             }
             Player player = send;
 
-            showLocation(player);
+            showLocation(player,false);
             return true;
         }
         return false;
     }
 
-    public void showLocation(Player player){
-        showLocation(player,null);
+    public void showLocation(Player player, boolean worldOnly){
+        showLocation(player,null,worldOnly);
     }
-    private void showLocation (Player player,@Nullable Player sender) {
+    private void showLocation (Player player,@Nullable Player sender, boolean worldOnly) {
         String world = player.getWorld().getName();
         int x = (int) (Math.floor(player.getLocation().getX()));
         int y = (int) (Math.floor(player.getLocation().getX()));
@@ -60,8 +67,12 @@ public class WorldCommand implements CommandExecutor, TabExecutor{
         if ( sender == null ){
             sender = player;
         }
+        if ( worldOnly ){
+            sender.sendRawMessage(ColorWords.get("&b" + world));
+        }
         sender.sendMessage(ColorWords.get(
                 "&3World&7: &7" + world));
+
         sender.sendMessage(ColorWords.get(
                 "&3Coordinates&7: &7" + coords));
     }
