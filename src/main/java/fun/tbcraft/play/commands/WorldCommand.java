@@ -1,5 +1,6 @@
 package fun.tbcraft.play.commands;
 
+import fun.tbcraft.play.utils.ColorWords;
 import org.bukkit.ChatColor;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
@@ -29,10 +30,11 @@ public class WorldCommand implements CommandExecutor, TabExecutor{
             int z = (int) (Math.floor(player.getLocation().getX()));
             String coords = x + ", " + y + ", " + z;
 
-            player.sendMessage(ChatColor.translateAlternateColorCodes('&',
+            player.sendMessage(ColorWords.get(
                     "&3World&7: &7" + world));
-            player.sendMessage(ChatColor.translateAlternateColorCodes('&',
+            player.sendMessage(ColorWords.get(
                     "&3Coordinates&7: &7" + coords));
+            return true;
         }
         return false;
     }
