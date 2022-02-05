@@ -12,6 +12,7 @@ import org.apache.commons.lang3.Validate;
 import org.bukkit.GameMode;
 import org.bukkit.Material;
 import org.bukkit.block.BlockFace;
+import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.EventPriority;
@@ -32,17 +33,17 @@ public class StartupListener implements BaseListener{
         ConfigFile configFile = new ConfigFile(p);
 
         if ( configFile.exists() ){
-            Validate.notNull(configFile.getConfig(),"Bad User Config for " + p.getName());
-            configFile.getConfig().addDefault("Login.Time", TBCTimeHandler.getTimeString(System.currentTimeMillis()));
-            if (! configFile.getConfig().isConfigurationSection("TBC") ) {
-                final var c = configFile.getConfig();
+            final var config = Validate.notNull(configFile.getConfig() , "Bad User Config for " + p.getName());
+            config.addDefault("Login.Time", TBCTimeHandler.getTimeString(System.currentTimeMillis()));
+            if (! config.isConfigurationSection("TBC") ) {
+                final var c = config;
                 c.addDefault("TBC.UUID", p.getUniqueId().toString());
                 final var value = 1;
-                if ( !configFile.getConfig().isInt("TBC.Times.Joined") ){
+                if ( !config.isInt("TBC.Times.Joined") ){
                     c.addDefault("TBC.Times.Joined", value);
                 }
                 else {
-                    final var actual = configFile.getConfig().getInt("TBC.Times.Joined");
+                    final var actual = config.getInt("TBC.Times.Joined");
                     c.set("TBC.Times.Joined",actual + 1);
                 }
                 configFile.save();
