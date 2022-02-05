@@ -37,14 +37,7 @@ public class WorldCommand implements CommandExecutor, TabExecutor{
                 final var otherPlayer = Bukkit.getPlayerExact(args[0]);
                 final var nnPl = Validate.notNull(otherPlayer,"Bad Player Name");
 
-                if ( nnPl.isOnline() ){
-                    showLocation(nnPl, send,false);
-                }
-                else {
-                    OfflinePlayer offlinePlayer = nnPl;
-                    showLocation(otherPlayer, send,false);
-
-                }
+                showLocation(nnPl,send,false);
             }
             Player player = send;
 
