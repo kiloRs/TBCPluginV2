@@ -9,9 +9,13 @@ public class ColorWords{
     public ColorWords (){
         hex = new HexColorParser();
     }
+
+    public static String hex(String origin){
+       return hex.parseColorCodes(origin);
+    }
     public static String get(String original){
         if ( !original.isEmpty() ) {
-            return    hex.parseColorCodes(original);
+            return hex(original);
         }
         return ColorString.get(original); }
 }
