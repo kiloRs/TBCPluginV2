@@ -1,7 +1,7 @@
 package fun.tbcraft.play.hub;
 
 import fun.tbcraft.play.TBCPlugin;
-import jdk.tools.jlink.plugin.Plugin;
+import org.bukkit.plugin.Plugin;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -17,7 +17,8 @@ public class HubManager{
         hubWorlds = new ArrayList<>();
 
         for(String worldName : worldNames) {
-            hubWorlds.add(new HubWorld(worldName));
+            final var world = new HubWorld(worldName);
+            hubWorlds.add(world);
         }
 
         for(HubWorld hubWorld : hubWorlds) {
@@ -27,4 +28,8 @@ public class HubManager{
     public List<HubWorld> getHubs(){
         return hubWorlds;
     }
+    public HubWorld getMainHub(){
+        return hubWorlds.get(0);
+    }
+
 }
