@@ -4,6 +4,7 @@ import com.palmergames.bukkit.towny.TownyAPI;
 import fun.tbcraft.play.commands.MainCommands;
 import fun.tbcraft.play.commands.WorldCommand;
 import fun.tbcraft.play.hub.HubManager;
+import fun.tbcraft.play.listener.TitleListener;
 import fun.tbcraft.play.utils.log.TBCFileLogger;
 import fun.tbcraft.play.utils.log.TBCLogger;
 import io.lumine.mythic.lib.api.player.EquipmentSlot;
@@ -23,6 +24,7 @@ import org.bukkit.entity.Player;
 import org.bukkit.event.Listener;
 import org.bukkit.plugin.Plugin;
 import org.bukkit.plugin.java.JavaPlugin;
+import org.bukkit.scheduler.BukkitTask;
 
 import java.util.ArrayList;
 
@@ -120,6 +122,7 @@ public class TBCPlugin extends JavaPlugin{
         }
             log("Completed TBCv2 Startup!");
 
+        Bukkit.getPluginManager().registerEvents(new TitleListener(),this);
         setConfigDefaults(0,true);
 
     }

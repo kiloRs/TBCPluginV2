@@ -1,13 +1,9 @@
 package fun.tbcraft.play.hub;
 
 import fun.tbcraft.play.TBCPlugin;
+import fun.tbcraft.play.hub.portal.PortalWorld;
 import org.bukkit.Bukkit;
-import org.bukkit.Location;
 import org.bukkit.World;
-
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
 
 public class HubWorld{
     private World hub = null;

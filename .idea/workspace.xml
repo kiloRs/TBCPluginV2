@@ -9,11 +9,17 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="7ff34517-188c-4340-a395-beea62381f55" name="Changes" comment="Adding Hub System">
+    <list default="true" id="7ff34517-188c-4340-a395-beea62381f55" name="Changes" comment="Updating Hub">
+      <change afterPath="$PROJECT_DIR$/src/main/java/fun/tbcraft/play/listener/TitleListener.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/jarRepositories.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/jarRepositories.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/fun/tbcraft/play/TBCPlugin.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/fun/tbcraft/play/TBCPlugin.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/fun/tbcraft/play/hub/HubManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/fun/tbcraft/play/hub/HubManager.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/fun/tbcraft/play/hub/HubWorld.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/fun/tbcraft/play/hub/HubWorld.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/fun/tbcraft/play/hub/PortalEnd.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/fun/tbcraft/play/hub/portal/PortalEnd.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/fun/tbcraft/play/hub/PortalEnter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/fun/tbcraft/play/hub/portal/PortalEnter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/fun/tbcraft/play/hub/PortalWorld.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/fun/tbcraft/play/hub/portal/PortalWorld.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -55,7 +61,9 @@
     <setting file="file://$PROJECT_DIR$/src/main/java/fun/tbcraft/play/TBCPlugin.java" root0="SKIP_INSPECTION" />
   </component>
   <component name="ProjectId" id="23eeDHrPdxL5Y6K2436B2OXN1it" />
-  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
@@ -67,7 +75,7 @@
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="jdk.selected.JAVA_MODULE" value="17" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/src" />
-    <property name="project.structure.last.edited" value="Modules" />
+    <property name="project.structure.last.edited" value="Libraries" />
     <property name="project.structure.proportion" value="0.31434384" />
     <property name="project.structure.side.proportion" value="0.66628957" />
     <property name="run.code.analysis.last.selected.profile" value="pProject Default" />
@@ -300,7 +308,21 @@
       <option name="project" value="LOCAL" />
       <updated>1644374194166</updated>
     </task>
-    <option name="localTasksCounter" value="31" />
+    <task id="LOCAL-00031" summary="Updating Hub">
+      <created>1644375897964</created>
+      <option name="number" value="00031" />
+      <option name="presentableId" value="LOCAL-00031" />
+      <option name="project" value="LOCAL" />
+      <updated>1644375897964</updated>
+    </task>
+    <task id="LOCAL-00032" summary="Updating Hub">
+      <created>1644375969418</created>
+      <option name="number" value="00032" />
+      <option name="presentableId" value="LOCAL-00032" />
+      <option name="project" value="LOCAL" />
+      <updated>1644375969418</updated>
+    </task>
+    <option name="localTasksCounter" value="33" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -339,6 +361,7 @@
     <MESSAGE value="Updated Other Player Support" />
     <MESSAGE value="Fixing Errors" />
     <MESSAGE value="Adding Hub System" />
-    <option name="LAST_COMMIT_MESSAGE" value="Adding Hub System" />
+    <MESSAGE value="Updating Hub" />
+    <option name="LAST_COMMIT_MESSAGE" value="Updating Hub" />
   </component>
 </project>

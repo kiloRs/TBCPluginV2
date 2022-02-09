@@ -82,14 +82,29 @@
             <id>aikar</id>
             <url>https://repo.aikar.co/content/groups/aikar/</url>
         </repository>
+
+        <repository>
+            <id>quickshop-repo</id>
+            <url>https://repo.codemc.io/repository/maven-public/</url>
+        </repository>
         <!--DungeonsXL-->
         <repository>
             <id>dre-repo</id>
             <url>https://erethon.de/repo</url>
         </repository>
+        <repository>
+            <id>codemc-repo</id>
+            <url>https://repo.codemc.org/repository/maven-public/</url>
+        </repository>
     </repositories>
 
     <dependencies>
+        <dependency>
+            <groupId>org.maxgamer</groupId>
+            <artifactId>QuickShop</artifactId>
+            <version>5.1.0.4</version>
+            <scope>provided</scope>
+        </dependency>
         <!--DungeonsXL-->
         <dependency>
             <groupId>de.erethon.dungeonsxl</groupId>
@@ -260,6 +275,12 @@
             <groupId>io.lumine</groupId>
             <artifactId>Mythic-Dist</artifactId>
             <version>5.0.0-SNAPSHOT</version>
+        </dependency>
+        <dependency>
+            <groupId>fr.xephi</groupId>
+            <artifactId>authme</artifactId>
+            <version>5.6.0-SNAPSHOT</version>
+            <scope>provided</scope>
         </dependency>
     </dependencies>
 
