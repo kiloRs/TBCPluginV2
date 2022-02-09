@@ -13,6 +13,10 @@ public class HubManager{
     public HubManager(Plugin plugin){
         this.plugin = plugin;
 
+        loadAll();
+    }
+
+    private void loadAll ( ) {
         List<String> worldNames = TBCPlugin.getConfiguration().getStringList("Hub.Worlds");
         hubWorlds = new ArrayList<>();
 
@@ -25,6 +29,7 @@ public class HubManager{
             TBCPlugin.log("Loaded Hub World: " + hubWorld.getId());
         }
     }
+
     public List<HubWorld> getHubs(){
         return hubWorlds;
     }
