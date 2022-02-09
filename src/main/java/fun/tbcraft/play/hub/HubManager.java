@@ -22,19 +22,21 @@ public class HubManager{
 
         for(String worldName : worldNames) {
             final var world = new HubWorld(worldName);
-            hubWorlds.add(world);
         }
 
         for(HubWorld hubWorld : hubWorlds) {
             TBCPlugin.log("Loaded Hub World: " + hubWorld.getId());
         }
     }
+    private void saveAll(){
+        for(HubWorld eachWorld : hubWorlds) {
+
+        }
+    }
 
     public List<HubWorld> getHubs(){
         return hubWorlds;
     }
-    public HubWorld getMainHub(){
-        return hubWorlds.get(0);
-    }
+
 
 }

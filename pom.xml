@@ -99,18 +99,17 @@
     </repositories>
 
     <dependencies>
-        <dependency>
-            <groupId>org.maxgamer</groupId>
-            <artifactId>QuickShop</artifactId>
-            <version>5.1.0.4</version>
-            <scope>provided</scope>
-        </dependency>
         <!--DungeonsXL-->
         <dependency>
             <groupId>de.erethon.dungeonsxl</groupId>
             <artifactId>dungeonsxl-api</artifactId>
             <version>0.18-PRE-02</version>
             <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>com.github.Rosstail</groupId>
+            <artifactId>Karma</artifactId>
+            <version>test-1.10.2</version>
         </dependency>
         <!--END LABYRINTH-->
         <dependency>
@@ -141,14 +140,9 @@
             <version>2.8.3</version>
         </dependency>
         <dependency>
-            <groupId>com.github.Gypopo</groupId>
-            <artifactId>EconomyShopGUI-API</artifactId>
-            <version>1.0.1</version>
-        </dependency>
-        <dependency>
             <groupId>org.maxgamer</groupId>
             <artifactId>QuickShop</artifactId>
-            <version>5.1.0.4-SNAPSHOT</version>
+            <version>5.1.0.4</version>
             <scope>provided</scope>
         </dependency>
         <dependency>
@@ -171,15 +165,9 @@
         <dependency>
             <groupId>me.devtec.theapi</groupId>
             <artifactId>TheAPI</artifactId>
-            <version>8.2.1</version>
+            <version>8.2.2</version>
             <scope>system</scope>
             <systemPath>C:/Users/rosen/Downloads/TheAPI.jar</systemPath>
-        </dependency>
-        <!--DiscordSRV-->
-        <dependency>
-            <groupId>com.github.discordsrv</groupId>
-            <artifactId>discordsrv</artifactId>
-            <version>1.24.0</version>
         </dependency>
         <!--AdvancedCore-->
         <dependency>
@@ -267,7 +255,7 @@
         <dependency>
             <groupId>io.lumine</groupId>
             <artifactId>MythicLib-dist</artifactId>
-            <version>1.3-R24-SNAPSHOT</version>
+            <version>1.3-R27-SNAPSHOT</version>
             <scope>provided</scope>
         </dependency>
 

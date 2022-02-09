@@ -1,6 +1,10 @@
 package fun.tbcraft.play.listener;
 
 import com.bencodez.advancedcore.listeners.AuthMeLogin;
+import com.ehhthan.mmobars.MMOBars;
+import com.ehhthan.mmobars.api.MMOBar;
+import com.ehhthan.mmobars.api.layout.ComponentKey;
+import com.ehhthan.mmobars.api.layout.LayoutOption;
 import fr.xephi.authme.api.v3.AuthMeApi;
 import fr.xephi.authme.api.v3.AuthMePlayer;
 import fr.xephi.authme.events.AuthMeAsyncPreRegisterEvent;
@@ -63,6 +67,13 @@ public class TitleListener implements BaseListener{
     public void onLog(AuthMeAsyncPreRegisterEvent e){
         final var player = e.getPlayer();
 
+        final var mmoBars = MMOBars.getInstance();
+
+        for(MMOBar value : mmoBars.getBarManager().values()) {
+            if ( value.getKey().equalsIgnoreCase("health")){
+                value.getOptions().get("")
+            }
+        }
         if (! e.canRegister() ) {
             TBCPlugin.errorLog("Player: " + player.getName() + " cannot register!");
             return;

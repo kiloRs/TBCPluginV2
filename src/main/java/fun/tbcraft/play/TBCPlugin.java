@@ -3,7 +3,6 @@ package fun.tbcraft.play;
 import com.palmergames.bukkit.towny.TownyAPI;
 import fun.tbcraft.play.commands.MainCommands;
 import fun.tbcraft.play.commands.WorldCommand;
-import fun.tbcraft.play.hub.HubManager;
 import fun.tbcraft.play.listener.TitleListener;
 import fun.tbcraft.play.utils.log.TBCFileLogger;
 import fun.tbcraft.play.utils.log.TBCLogger;
@@ -31,6 +30,8 @@ import java.util.ArrayList;
 public class TBCPlugin extends JavaPlugin{
     private static Plugin plugin = null;
     private static final TBCFileLogger tbcFileLogger = new TBCFileLogger("log.txt");
+    private static Config mainCommandsConfig;
+
     public static Plugin getPlugin ( ) {
         return plugin;
     }
@@ -67,11 +68,14 @@ public class TBCPlugin extends JavaPlugin{
     public void onEnable ( ) {
         plugin = this;
         //Loading Main Stat Below.
-
         registerCommands(this, "whereami", new WorldCommand(), new WorldCommand());
 
         if ( config == null ){
             TBCPlugin.config = new Config("TBCPluginV2/config.yml",DataType.YAML);
+        }
+        if ( mainCommandsConfig == null ){
+            mainCommandsConfig = new Config("TBCPluginV2/commands.yml");
+
         }
         if ( settings == null ){
             settings = new Config("TBCPluginV2/settings.yml");
@@ -132,6 +136,9 @@ public class TBCPlugin extends JavaPlugin{
             plugin.getCommand(commandText).setTabCompleter(tab);
         }
 
+    }
+    public static Config getCommandConfig(){
+        return mainCommandsConfig;
     }
 
     static void registerEvents(Listener listener, JavaPlugin plugin) {
@@ -214,8 +221,5 @@ public class TBCPlugin extends JavaPlugin{
     }
     public static void callEmergency (String emergency){
         throw new RuntimeException(emergency + " !");
-    }
-    public static HubManager getHubManager ( ){
-        return new HubManager(TBCPlugin.getPlugin());
     }
 }
