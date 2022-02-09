@@ -4,6 +4,7 @@ import fun.tbcraft.play.utils.ColorWords;
 import org.apache.commons.lang3.Validate;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
+import org.bukkit.Location;
 import org.bukkit.OfflinePlayer;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
@@ -38,6 +39,7 @@ public class WorldCommand implements CommandExecutor, TabExecutor{
                 final var nnPl = Validate.notNull(otherPlayer,"Bad Player Name");
 
                 showLocation(nnPl,send,false);
+                return true;
             }
             Player player = send;
 

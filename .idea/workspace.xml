@@ -9,8 +9,21 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="7ff34517-188c-4340-a395-beea62381f55" name="Changes" comment="Updated Other Player Support">
+    <list default="true" id="7ff34517-188c-4340-a395-beea62381f55" name="Changes" comment="Fixing Errors">
+      <change afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/jarRepositories.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/fun/tbcraft/play/hub/HubManager.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/fun/tbcraft/play/hub/HubWorld.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/fun/tbcraft/play/hub/PortalEnd.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/fun/tbcraft/play/hub/PortalEnter.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/fun/tbcraft/play/hub/PortalWorld.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/KiloRoot.iml" beforeDir="false" afterPath="$PROJECT_DIR$/KiloRoot.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/fun/tbcraft/play/commands/WorldCommand.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/fun/tbcraft/play/commands/WorldCommand.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/fun/tbcraft/play/listener/StartupListener.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/fun/tbcraft/play/listener/StartupListener.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -61,6 +74,7 @@
     <property name="NEW_TOOLWINDOW_STRIPE_DEFAULTS" value="true" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="jdk.selected.JAVA_MODULE" value="17" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/src" />
     <property name="project.structure.last.edited" value="Modules" />
@@ -275,7 +289,21 @@
       <option name="project" value="LOCAL" />
       <updated>1644052436091</updated>
     </task>
-    <option name="localTasksCounter" value="28" />
+    <task id="LOCAL-00028" summary="Fixing Errors">
+      <created>1644052778535</created>
+      <option name="number" value="00028" />
+      <option name="presentableId" value="LOCAL-00028" />
+      <option name="project" value="LOCAL" />
+      <updated>1644052778535</updated>
+    </task>
+    <task id="LOCAL-00029" summary="Fixing Errors">
+      <created>1644052864524</created>
+      <option name="number" value="00029" />
+      <option name="presentableId" value="LOCAL-00029" />
+      <option name="project" value="LOCAL" />
+      <updated>1644052864524</updated>
+    </task>
+    <option name="localTasksCounter" value="30" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -312,6 +340,7 @@
     <MESSAGE value="Fixes" />
     <MESSAGE value="Changed to HEX support." />
     <MESSAGE value="Updated Other Player Support" />
-    <option name="LAST_COMMIT_MESSAGE" value="Updated Other Player Support" />
+    <MESSAGE value="Fixing Errors" />
+    <option name="LAST_COMMIT_MESSAGE" value="Fixing Errors" />
   </component>
 </project>

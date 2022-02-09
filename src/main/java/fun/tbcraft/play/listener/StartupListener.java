@@ -3,14 +3,23 @@ package fun.tbcraft.play.listener;
 import com.bergerkiller.bukkit.common.utils.PlayerUtil;
 import fun.tbcraft.play.DisplayUtil;
 import fun.tbcraft.play.TBCPlugin;
+import fun.tbcraft.play.player.TBCPlayer;
 import fun.tbcraft.play.utils.TBCProperties;
 import fun.tbcraft.play.utils.TBCTimeHandler;
 import fun.tbcraft.play.utils.ColorWords;
 import io.lumine.mythic.utils.chat.ColorString;
 import net.Indyuce.mmocore.api.ConfigFile;
+import net.luckperms.api.LuckPerms;
+import net.luckperms.api.LuckPermsProvider;
+import net.luckperms.api.model.group.Group;
+import net.luckperms.api.model.user.User;
+import net.luckperms.api.node.Node;
+import net.luckperms.api.query.QueryOptions;
 import org.apache.commons.lang3.Validate;
+import org.bukkit.Bukkit;
 import org.bukkit.GameMode;
 import org.bukkit.Material;
+import org.bukkit.World;
 import org.bukkit.block.BlockFace;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.entity.Player;
@@ -20,115 +29,40 @@ import org.bukkit.event.player.PlayerGameModeChangeEvent;
 import org.bukkit.event.player.PlayerInteractEvent;
 import org.bukkit.event.player.PlayerJoinEvent;
 import org.bukkit.event.player.PlayerQuitEvent;
+import org.bukkit.scheduler.BukkitTask;
+import org.mozilla.javascript.ast.SwitchCase;
 
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
 
 
 public class StartupListener implements BaseListener{
-    private static final List<Player> onlinePlayers = new ArrayList<>();
-    @EventHandler
-    public void onPlayerJoin(PlayerJoinEvent e){
-        final var p = e.getPlayer();
-        ConfigFile configFile = new ConfigFile(p);
+    private static String ovv = "default";
+    private static List<String> acceptableWorlds = TBCPlugin.getConfiguration().getStringList("Worlds");
 
+    @EventHandler
+    public void on(PlayerJoinEvent event){
+        final var player = event.getPlayer();
+
+        final var world = player.getWorld();
+
+        final var tbcPlayer = TBCPlayer.get(player);
+        if ( acceptableWorlds.contains(world.getName()) || player.isOp()){
+            new DisplayUtil().send(player);
+        }
+
+        final var configFile = new ConfigFile(tbcPlayer.getStoredPlayer());
         if ( configFile.exists() ){
-            final var config = Validate.notNull(configFile.getConfig() , "Bad User Config for " + p.getName());
-            config.addDefault("Login.Time", TBCTimeHandler.getTimeString(System.currentTimeMillis()));
-            if (! config.isConfigurationSection("TBC") ) {
-                final var c = config;
-                c.addDefault("TBC.UUID", p.getUniqueId().toString());
-                final var value = 1;
-                if ( !config.isInt("TBC.Times.Joined") ){
-                    c.addDefault("TBC.Times.Joined", value);
-                }
-                else {
-                    final var actual = config.getInt("TBC.Times.Joined");
-                    c.set("TBC.Times.Joined",actual + 1);
-                }
-                configFile.save();
+            final var config = configFile.getConfig();
+
+            if ( config.contains("hub") ) {
+
             }
-            TBCPlugin.debug("Loaded Config For " + p.getName());
-        }
-        if ( !onlinePlayers.contains(p) ){
-            onlinePlayers.add(p);
-        }
-        else {
-            TBCPlugin.debug("Player Already Found in Database!  [" + p.getName() + "]");
-        }
-
-        final var displayUtil = new DisplayUtil();
-        displayUtil.send(p);
-
-    }
-    @EventHandler
-    public void onLeave(PlayerQuitEvent e){
-        final var p = e.getPlayer();
-        onlinePlayers.remove(p);
-        TBCPlugin.debug("Removed " + p.getName() + " from Online");
-
-    }
-    @EventHandler
-    public void on(PlayerGameModeChangeEvent e){
-        final var newGameMode = e.getNewGameMode();
-
-        if ( newGameMode==GameMode.CREATIVE ){
-            final var player = e.getPlayer();
-            if ( onlinePlayers.contains(player) ){
-                if ( !player.hasPermission("creative.mode") ){
-                    e.setCancelled(true);
-                }
-                return;
-            }
-            throw new RuntimeException("Unloaded Playerdata...");
         }
     }
-    @EventHandler(priority = EventPriority.HIGHEST)
-    public void onLimeResourcePack(PlayerInteractEvent e) {
-        final var player = e.getPlayer();
-        if ( player.hasResourcePack() ){
-            player.sendRawMessage(ColorString.get("&cYou already have the resource pack!"));
-            return;
-        }
-
-        if ( !player.isOnline() || PlayerUtil.isDisconnected(player) ) {
-            TBCPlugin.errorLog("Player Offline! [" + player.getName() + "]");
-            e.setCancelled(true);
-        }
-        if ( player.isOp() ) {
-            if ( player.getGameMode() == GameMode.SPECTATOR ) {
-                player.sendRawMessage(ColorWords.get("&4Bad Gamemode"));
-                return;
-            }
-            if ( player.getGameMode() == GameMode.CREATIVE ) {
-                player.sendRawMessage(ColorWords.get("&4Bad Gamemode"));
-                return;
-            }
-            if ( e.hasBlock() ) {
-                if ( e.getBlockFace() != BlockFace.UP ) {
-                    return;
-                }
-                final var clickedBlock = e.getClickedBlock();
-                if ( clickedBlock == null ) {
-                    return;
-                }
-                if ( clickedBlock.getType() == Material.LIME_CONCRETE_POWDER ) {
-                    player.setResourcePack(TBCProperties.resourcePack);
-                    player.sendRawMessage(ColorString.get("&aAdding Resource Pack"));
-                    return;
-                }
-                if ( clickedBlock.getType()== Material.ENCHANTING_TABLE ) {
-                    e.setCancelled(true);
-                    player.sendRawMessage(ColorWords.get("&cYou cannot enchant yet."));
-                }
-            }
-            ;
-        }
-    }
-
-
     @Override
     public String getName ( ) {
-        return "STARTUP";
+        return "";
     }
 }
