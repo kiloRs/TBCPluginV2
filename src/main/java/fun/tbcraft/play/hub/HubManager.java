@@ -8,7 +8,7 @@ import java.util.List;
 
 public class HubManager{
     private final Plugin plugin;
-    private List<HubWorld> hubWorlds;
+    private List<HubWorld> hubWorlds = new ArrayList<>();
     private boolean loaded = false;
 
     public HubManager(Plugin plugin){
@@ -18,10 +18,8 @@ public class HubManager{
     }
 
     private void loadAll (List<String> keys) {
-        List<String> worldNames = keys;
-        hubWorlds = new ArrayList<>();
 
-        for(String worldName : worldNames) {
+        for(String worldName : keys) {
             final var world = new HubWorld(worldName);
 
             if ( world.getHub() == null ){
