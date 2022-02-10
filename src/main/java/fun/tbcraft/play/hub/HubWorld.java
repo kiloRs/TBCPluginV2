@@ -6,7 +6,7 @@ import org.bukkit.World;
 
 public class HubWorld{
     private World hub = null;
-    private String id;
+    private final String id;
     private boolean inventoryLocked = true;
     private boolean pvp = false;
     private boolean pve = false;
@@ -15,9 +15,19 @@ public class HubWorld{
     public HubWorld (String id) {
         this.hub = Bukkit.getWorld(id);
         this.id = id;
-        this.inventoryLocked = TBCPlugin.getConfiguration().getBoolean("Hub." + id + ".Inventory.Locked");
-        this.pve = TBCPlugin.getConfiguration().getBoolean("Hub." + id + ".PVE");
-        this.pvp = TBCPlugin.getConfiguration().getBoolean("Hub." + id + ".PVP");
+        final var c = TBCPlugin.getConfiguration();
+        if ( !c.exists("Hub." + id) ){
+            final var hubSection = c.getSection("Hub." + id);
+
+            hubSection.set("Inventory.Locked",false);
+            hubSection.set("PVE",true);
+            hubSection.set("PVP",false);
+            c.save();
+
+        }
+        this.inventoryLocked = c.getBoolean("Hub." + id + ".Inventory.Locked");
+        this.pve = c.getBoolean("Hub." + id + ".PVE");
+        this.pvp = c.getBoolean("Hub." + id + ".PVP");
         if ( this.hub == null ) {
             throw new RuntimeException("No World:  " + this.id);
         }
