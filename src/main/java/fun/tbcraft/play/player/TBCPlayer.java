@@ -1,6 +1,5 @@
 package fun.tbcraft.play.player;
 
-import eu.asangarin.tt.player.PlayerData;
 import fun.tbcraft.play.TBCPlugin;
 import fun.tbcraft.play.utils.BodyPartsAPI;
 import io.lumine.mythic.lib.api.player.MMOPlayerData;
@@ -17,7 +16,6 @@ import java.util.UUID;
 public class TBCPlayer{
     private Player storedPlayer;
     private MMOPlayerData mmoPlayerData;
-    private PlayerData ttPlayerData;
     private net.Indyuce.mmocore.api.player.PlayerData corePlayerData;
     private net.Indyuce.mmoitems.api.player.PlayerData itemsPlayerData;
     private User databasePlayer;
@@ -40,7 +38,6 @@ public class TBCPlayer{
         }
         this.storedPlayer = Bukkit.getPlayer(id);
         this.mmoPlayerData = MMOPlayerData.get(id);
-        this.ttPlayerData = PlayerData.get(this.storedPlayer);
         this.corePlayerData = net.Indyuce.mmocore.api.player.PlayerData.get(id);
         this.itemsPlayerData = net.Indyuce.mmoitems.api.player.PlayerData.get(id);
         this.databasePlayer = TheAPI.getUser(id);
@@ -62,10 +59,6 @@ public class TBCPlayer{
 
     public net.Indyuce.mmocore.api.player.PlayerData getCorePlayerData ( ) {
         return corePlayerData;
-    }
-
-    public PlayerData getTtPlayerData ( ) {
-        return ttPlayerData;
     }
 
     public MMOPlayerData getMmoPlayerData ( ) {
