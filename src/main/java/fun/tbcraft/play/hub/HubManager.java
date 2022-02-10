@@ -4,34 +4,35 @@ import fun.tbcraft.play.TBCPlugin;
 import org.bukkit.plugin.Plugin;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 public class HubManager{
     private final Plugin plugin;
     private List<HubWorld> hubWorlds;
+    private boolean loaded = false;
+
     public HubManager(Plugin plugin){
         this.plugin = plugin;
-
-        loadAll();
+        final var keys = TBCPlugin.getConfiguration().getKeys("Hub",false);
+        loadAll(keys.stream().toList());
     }
 
-    private void loadAll ( ) {
-        List<String> worldNames = TBCPlugin.getConfiguration().getStringList("Hub.Worlds");
+    private void loadAll (List<String> keys) {
+        List<String> worldNames = keys;
         hubWorlds = new ArrayList<>();
 
         for(String worldName : worldNames) {
             final var world = new HubWorld(worldName);
+
+            if ( world.getHub() == null ){
+                continue;
+            }
+            hubWorlds.add(world);
+            TBCPlugin.log("Added Hub: " + worldName);
         }
 
-        for(HubWorld hubWorld : hubWorlds) {
-            TBCPlugin.log("Loaded Hub World: " + hubWorld.getId());
-        }
-    }
-    private void saveAll(){
-        for(HubWorld eachWorld : hubWorlds) {
+        loaded = true;
 
-        }
     }
 
     public List<HubWorld> getHubs(){

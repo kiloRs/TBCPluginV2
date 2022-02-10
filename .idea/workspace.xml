@@ -9,9 +9,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="7ff34517-188c-4340-a395-beea62381f55" name="Changes" comment="Rollback">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/fun/tbcraft/play/hub/HubWorld.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/fun/tbcraft/play/hub/HubWorld.java" afterDir="false" />
+    <list default="true" id="7ff34517-188c-4340-a395-beea62381f55" name="Changes" comment="Hub">
+      <change beforePath="$PROJECT_DIR$/src/main/java/fun/tbcraft/play/hub/HubManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/fun/tbcraft/play/hub/HubManager.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -348,7 +347,14 @@
       <option name="project" value="LOCAL" />
       <updated>1644459602957</updated>
     </task>
-    <option name="localTasksCounter" value="36" />
+    <task id="LOCAL-00036" summary="Hub">
+      <created>1644525618866</created>
+      <option name="number" value="00036" />
+      <option name="presentableId" value="LOCAL-00036" />
+      <option name="project" value="LOCAL" />
+      <updated>1644525618866</updated>
+    </task>
+    <option name="localTasksCounter" value="37" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -364,7 +370,6 @@
     <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Fixed NPE" />
     <MESSAGE value="Added Test Skill" />
     <MESSAGE value="Added Actual Test" />
     <MESSAGE value="Added Various Utils&#10;Added PlayerClassType for selecting pre-defined class types." />
@@ -389,6 +394,7 @@
     <MESSAGE value="Updated Stupid System for Commands" />
     <MESSAGE value="Match World" />
     <MESSAGE value="Rollback" />
-    <option name="LAST_COMMIT_MESSAGE" value="Rollback" />
+    <MESSAGE value="Hub" />
+    <option name="LAST_COMMIT_MESSAGE" value="Hub" />
   </component>
 </project>
