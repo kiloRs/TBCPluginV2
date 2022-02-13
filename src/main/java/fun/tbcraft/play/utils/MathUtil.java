@@ -32,8 +32,5 @@ public class MathUtil{
         return blocks;
     }
 
-    public double getStelliumUse(Double distance, Double totalStellium, Double modifier, Double standardRate){
-        return distance * ( totalStellium / standardRate ) * modifier;
-    }
 
 }

@@ -1,0 +1,11 @@
+<component name="libraryTable">
+  <library name="A-Nameless">
+    <CLASSES>
+      <root url="jar://$PLUGINS$/Nameless-Plugin-2.1.1.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES>
+      <root url="file://$PROJECT_DIR$/../Nameless-Java-API/src" />
+    </SOURCES>
+  </library>
+</component>

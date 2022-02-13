@@ -12,14 +12,26 @@ public class TBCFileLogger{
     public TBCFileLogger (String locPlusExt){
         this.location = new File(TBCPlugin.getPlugin().getDataFolder() , locPlusExt);
 
+        if ( !location.isFile() && !location.exists() ){
+            try {
+                location.createNewFile();
+                TBCPlugin.log("Loading Log File...");
+            } catch (IOException e) {
+                e.printStackTrace();
+                TBCPlugin.errorLog("Log File Error!");
+                return;
+            }
+
+            TBCPlugin.log("Log File Loaded");
+        }
     }
     public void logToFile(String message, String fileName, String extension) {
         if ( this.location == null || !this.location.exists() ){
             this.location = new File(TBCPlugin.getPlugin().getDataFolder() , fileName + "." + extension);
         }
         try {
-            if (!this.location.getParentFile().exists()) {
-                this.location.getParentFile().mkdirs();
+            if (!this.location.getParentFile().exists() || !this.location.getParentFile().isDirectory() ) {
+                this.location.getParentFile().mkdir();
             }
 
             File saveTo = this.location;
