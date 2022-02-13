@@ -5,6 +5,8 @@ import fun.tbcraft.play.player.TBCPlayer;
 import fun.tbcraft.play.utils.DisplayUtil;
 import fun.tbcraft.play.utils.TBCProperties;
 import net.Indyuce.mmocore.api.ConfigFile;
+import net.kyori.adventure.util.TriState;
+import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.player.PlayerJoinEvent;
 import org.bukkit.event.player.PlayerResourcePackStatusEvent;
@@ -21,12 +23,14 @@ public class StartupListener implements BaseListener{
     @EventHandler
     public void on(PlayerJoinEvent event){
         final var player = event.getPlayer();
-    }
-    @EventHandler
-    public void onResourcePack(PlayerResourcePackStatusEvent e){
-        if ( e.getStatus()== PlayerResourcePackStatusEvent.Status.DECLINED ) {
-            e.getPlayer().setResourcePack(TBCProperties.resourcePack, "",true);
+
+        final var file = new ConfigFile(player);
+        if ( !file.exists() ){
+            file.save();
+
         }
+        final var fileConfig = file.getConfig();
+
     }
     @Override
     public String getName ( ) {
