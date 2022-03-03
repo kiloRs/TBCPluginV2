@@ -9,17 +9,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="7ff34517-188c-4340-a395-beea62381f55" name="Changes" comment="Remmoved Dumb Stuff">
-      <change afterPath="$PROJECT_DIR$/src/main/java/fun/tbcraft/play/listener/BaseListener.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/fun/tbcraft/play/listener/BlockListener.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/ItemsAdder_3_0_0_beta7.xml" beforeDir="false" />
+    <list default="true" id="7ff34517-188c-4340-a395-beea62381f55" name="Changes" comment="Listener">
+      <change beforePath="$PROJECT_DIR$/.idea/artifacts/TBCV2.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/artifacts/TBCV2.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/fun/tbcraft/play/TBCPlugin.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/fun/tbcraft/play/TBCPlugin.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/fun/tbcraft/play/commands/SystemCommands.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/fun/tbcraft/play/commands/SystemCommands.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/fun/tbcraft/play/listener/StartupListener.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/fun/tbcraft/play/listener/DebugListener.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/fun/tbcraft/play/utils/BlockCore.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/fun/tbcraft/play/block/BlockCore.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/fun/tbcraft/play/utils/TBCRegistrationFactory.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/fun/tbcraft/play/utils/TBCRegistrationFactory.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TheBestChoiceMC.iml" beforeDir="false" afterPath="$PROJECT_DIR$/TheBestChoiceMC.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/plugin.yml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/plugin.yml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -85,13 +78,14 @@
     <property name="NEW_TOOLWINDOW_STRIPE_DEFAULTS" value="true" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="TODO_SCOPE" value="All Places" />
     <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary" value="JUnit5" />
     <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5" value="" />
     <property name="create.test.in.the.same.root" value="true" />
     <property name="jdk.selected.JAVA_MODULE" value="17" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/../QuickShop-Reremake" />
-    <property name="project.structure.last.edited" value="Libraries" />
+    <property name="project.structure.last.edited" value="Modules" />
     <property name="project.structure.proportion" value="0.31434384" />
     <property name="project.structure.side.proportion" value="0.6064865" />
     <property name="run.code.analysis.last.selected.profile" value="pProject Default" />
@@ -422,7 +416,21 @@
       <option name="project" value="LOCAL" />
       <updated>1646282241840</updated>
     </task>
-    <option name="localTasksCounter" value="44" />
+    <task id="LOCAL-00044" summary="Listener">
+      <created>1646337877453</created>
+      <option name="number" value="00044" />
+      <option name="presentableId" value="LOCAL-00044" />
+      <option name="project" value="LOCAL" />
+      <updated>1646337877464</updated>
+    </task>
+    <task id="LOCAL-00045" summary="Listener">
+      <created>1646337908395</created>
+      <option name="number" value="00045" />
+      <option name="presentableId" value="LOCAL-00045" />
+      <option name="project" value="LOCAL" />
+      <updated>1646337908395</updated>
+    </task>
+    <option name="localTasksCounter" value="46" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -437,7 +445,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Updated things, removed bad systems for further work" />
     <MESSAGE value="Dumb Shti Im sure..." />
     <MESSAGE value="Added DisplayUtil" />
     <MESSAGE value="Updated Listener to NullCheck" />
@@ -462,7 +469,8 @@
     <MESSAGE value="Did some dumb shit" />
     <MESSAGE value="Adjusted SKill Debug" />
     <MESSAGE value="Remmoved Dumb Stuff" />
-    <option name="LAST_COMMIT_MESSAGE" value="Remmoved Dumb Stuff" />
+    <MESSAGE value="Listener" />
+    <option name="LAST_COMMIT_MESSAGE" value="Listener" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

@@ -3,7 +3,6 @@
     <output-path>$PLUGINS$/CustomDesignedPlugin</output-path>
     <root id="archive" name="TBCV2.jar">
       <element id="module-output" name="TheBestChoiceMC" />
-      <element id="library" level="module" name="Maven: me.devtec.theapi:TheAPI:8.5" module-name="TheBestChoiceMC" />
     </root>
   </artifact>
 </component>
