@@ -6,7 +6,7 @@ import net.Indyuce.mmocore.api.player.profess.PlayerClass;
 import org.apache.commons.lang3.Validate;
 
 public enum PlayerClassType{
-    MAGE("Mage"),ROGUE("Rogue"),PALADIN("Paladin"),WARRIOR("Warrior"),HUNTER("Hunter");
+    MAGE("Mage"),ROGUE("Rogue"),PALADIN("Paladin"),WARRIOR("Warrior"),HUNTER("Hunter"),HUMAN("None");
 
     private final String id;
     private final Double stelliumMultiplier;
@@ -14,6 +14,12 @@ public enum PlayerClassType{
 
     PlayerClassType(String id){
         final var s = TBCPlugin.getSettings();
+        if ( id.equalsIgnoreCase("None") ){
+            this.id = Validate.notNull(id,"Bad Class Setup");
+            this.stelliumMultiplier = 1.0;
+            this.manaMultiplier = 1;
+            return;
+        }
         if ( !s.exists(id) ){
             s.addDefault(id + ".Stellium",1);
             s.addDefault(id + ".Mana",1);

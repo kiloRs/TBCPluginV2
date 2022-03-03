@@ -92,6 +92,11 @@
       <option name="url" value="https://repo.alessiodp.com/releases/" />
     </remote-repository>
     <remote-repository>
+      <option name="id" value="glaremasters repo" />
+      <option name="name" value="glaremasters repo" />
+      <option name="url" value="https://repo.glaremasters.me/repository/towny/" />
+    </remote-repository>
+    <remote-repository>
       <option name="id" value="jboss.community" />
       <option name="name" value="JBoss Community repository" />
       <option name="url" value="https://repository.jboss.org/nexus/content/repositories/public/" />
@@ -105,6 +110,11 @@
       <option name="id" value="dre-repo" />
       <option name="name" value="dre-repo" />
       <option name="url" value="https://erethon.de/repo" />
+    </remote-repository>
+    <remote-repository>
+      <option name="id" value="Sparky" />
+      <option name="name" value="Sparky" />
+      <option name="url" value="https://nexus.sparky.ac/repository/Sparky/" />
     </remote-repository>
   </component>
 </project>

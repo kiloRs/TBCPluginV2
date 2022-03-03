@@ -1,6 +1,7 @@
 package fun.tbcraft.play.utils.log;
 
 import fun.tbcraft.play.TBCPlugin;
+import fun.tbcraft.play.utils.Coloring;
 
 import java.util.logging.Logger;
 
@@ -8,43 +9,49 @@ public class TBCLogger{
     public static final Logger logger = Logger.getLogger("Minecraft");
     private static final int debugLevel = TBCPlugin.getConfiguration().exists("Debug.Level")?TBCPlugin.getConfiguration().getInt("Debug.Level"):0;
     private static final TBCLogger tbc = new TBCLogger();
-    private static String prefix = "[TBCPlugin] ";
+    private static String prefix = "[TBCPlugin] &e";
 
     public TBCLogger(){
-        this("[TBCPlugin] ");
+        this("[TBCPlugin] &e");
     }
     public TBCLogger(String prefix){
         TBCLogger.prefix = prefix;
     }
     public static void logMessage(String message){
-        tbc.log(message,0);
+        tbc.log(message,LogType.LOW);
     }
     public static void logError(String error){
-        tbc.log(error,3);
+        tbc.log(error,LogType.HIGH);
     }
     public static void debugOnly(String n, int num){
         try {
-            tbc.log(n,num);
+            tbc.log(n,LogType.DEBUG);
         } catch (Exception e) {
             e.printStackTrace();
         }
     }
-    private void log(String text, int level){
-        if ( level < 0 ){
-            logger.severe("[Debug] " + text);
+    private void log(String text, LogType logType){
+        if ( logType==LogType.DEBUG ){
+            if ( !TBCPlugin.getConfiguration().exists("Debug.Level") ){
+                TBCPlugin.getConfiguration().addDefault("Debug.Level",3);
+                TBCPlugin.getConfiguration().save();
+            }
+            else {
+                if ( TBCPlugin.getConfiguration().isInteger("Debug.Level") ){
+                    if ( TBCPlugin.getConfiguration().getInt("Debug.Level")>0 ){
+                        logger.warning(Coloring.get("&c[Debug] "  + text));
+                    }
+                }
+            }
         }
-        if ( level == 0  ){
-            logger.info(prefix + text);
-            return;
-        }
-        if ( debugLevel == level && level == 2){
-            logger.warning(prefix + text);
-        }
-        else if ( debugLevel >= level && level == 1 ){
-            logger.info(prefix + text);
-        }
-        else{
+        if ( logType==LogType.HIGH ){
             logger.severe(prefix + text);
         }
+        else if ( logType==LogType.MEDIUM ){
+            logger.warning(prefix + text);
+        }
+    }
+    enum LogType{
+        HIGH,MEDIUM,LOW,DEBUG;
     }
 }

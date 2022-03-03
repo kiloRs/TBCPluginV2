@@ -2,17 +2,13 @@ name: TBCPluginV2
 main: fun.tbcraft.play.TBCPlugin
 description: TBCs Plugin
 author: Kilo
-version: 1.0.4
+version: 1.0.5
 api-version: 1.18
 softdepend:
   - MythicMobs
-  - MMOCore
   - Alchema
-  - Skulls
-  - Karma
   - WorldGaurd
   - WorldEdit
-  - WorldGaurdGUI
   - CMI
   - Towny
 depend:
@@ -40,3 +36,6 @@ commands:
   whereami:
     aliases:
       - where
+    usage: Find the world/location of user
+    permission-message: No Permission
+    permission: default

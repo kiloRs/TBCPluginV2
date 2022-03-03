@@ -1,7 +1,6 @@
 package fun.tbcraft.play;
 
 import com.palmergames.bukkit.towny.TownyAPI;
-import fun.tbcraft.play.commands.MainCommands;
 import fun.tbcraft.play.commands.WorldCommand;
 import fun.tbcraft.play.utils.log.TBCFileLogger;
 import fun.tbcraft.play.utils.log.TBCLogger;
@@ -54,6 +53,14 @@ public class TBCPlugin extends JavaPlugin{
     }
     public static void errorLog(String logMessage){
         TBCLogger.logError(logMessage);
+    }
+
+    public static Config getWaypointConfig ( ) {
+        return new Config("TBCPluginV2/waypoints.json",DataType.JSON);
+    }
+
+    public static Config getAntiCheat ( ) {
+        return new Config("TBCPluginV2/spartan.yml");
     }
 
     @Override
@@ -124,7 +131,6 @@ public class TBCPlugin extends JavaPlugin{
         }
             log("Completed TBCv2 Startup!");
 
-        Bukkit.getPluginManager().registerEvents(new TitleListener(),this);
         setConfigDefaults(0,true);
 
     }
@@ -155,6 +161,8 @@ public class TBCPlugin extends JavaPlugin{
                     if ( args[0].equalsIgnoreCase("reload") || args[0].equalsIgnoreCase("load") ){
                         config.reload();
                         settings.reload();
+                        getWaypointConfig().reload();
+                        getCommandConfig().reload();;
                         reloadConfig();
                         log("Reloading TBC!");
                         if ( sender instanceof Player player ){
@@ -163,20 +171,10 @@ public class TBCPlugin extends JavaPlugin{
 
                         return true;
                     }
-                    else{
-                        if ( sender instanceof Player p ){
-                            final var thisArg = args[0];
-                            final var player = Bukkit.getPlayer(thisArg);
-                            if ( player != null ) {
-                                player.sendPluginMessage(TBCPlugin.plugin,"",new byte[]{Byte.parseByte("You have been loaded!")});
-
-                            }
-                        }
-                    }
                 }
             }
         }
-        return new MainCommands().onCommand(sender, command, label, args);
+        return new WorldCommand().onCommand(sender, command, label, args);
     }
 
     @Override

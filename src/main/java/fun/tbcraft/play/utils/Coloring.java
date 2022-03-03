@@ -3,10 +3,10 @@ package fun.tbcraft.play.utils;
 import io.lumine.mythic.lib.comp.hexcolor.HexColorParser;
 import io.lumine.mythic.utils.chat.ColorString;
 
-public class ColorWords{
+public class Coloring{
     private static HexColorParser hex;
 
-    public ColorWords (){
+    public Coloring (){
         hex = new HexColorParser();
     }
 

@@ -1,11 +1,8 @@
 package fun.tbcraft.play.commands;
 
-import fun.tbcraft.play.utils.ColorWords;
+import fun.tbcraft.play.utils.Coloring;
 import org.apache.commons.lang3.Validate;
-import org.bukkit.Bukkit;
-import org.bukkit.ChatColor;
-import org.bukkit.Location;
-import org.bukkit.OfflinePlayer;
+import org.bukkit.*;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
@@ -14,14 +11,45 @@ import org.bukkit.entity.Player;
 import org.jetbrains.annotations.NotNull;
 
 import javax.annotation.Nullable;
-import javax.xml.validation.Validator;
 import java.util.ArrayList;
 import java.util.List;
 
 public class WorldCommand implements CommandExecutor, TabExecutor{
+    private Location location;
 
     @Override
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
+        final var firstWord = args[0];
+
+        if ( !sender.isOp() ){
+            sender.sendMessage(Coloring.get("&cYou cannot use this command due to permissions of KingKilo."));
+            return false;
+        }
+
+        if ( label.equalsIgnoreCase("location") || label.equalsIgnoreCase("l") ){
+            if ( args.length == 1 ){
+                if ( firstWord.startsWith("-") ){
+                    final var occurance = firstWord.split("-")[1];
+
+                    if ( occurance.equalsIgnoreCase("s") || occurance.equalsIgnoreCase(sender.getName())){
+                        if ( sender instanceof Player player ){
+                            player.sendRawMessage(Coloring.get("&aCurrent Location"));
+                            location = player.getLocation();
+                            player.sendRawMessage("&e - X: " + location.getBlockX());
+                            player.sendRawMessage("&b - Y: " + location.getBlockY());
+                            player.sendRawMessage("&e - Z: " + location.getBlockZ());
+                            player.sendRawMessage("&5 - World: " + location.getWorld().getName());
+                            player.sendRawMessage("&7 - Dimension Type: " + location.getWorld().getWorldType().getName());
+                        }
+                    }
+                }
+                Player o = Bukkit.getPlayerExact(firstWord);
+
+                if ( o == null ){
+                    sender.sendMessage("&cPlayer Not Found");
+                }
+            }
+        }
         if (label.equalsIgnoreCase("whereami") || label.equalsIgnoreCase("where")) {
             if (!(sender instanceof Player send)) {
                 sender.sendMessage("Oops! This command can only be run by a player");
@@ -29,13 +57,13 @@ public class WorldCommand implements CommandExecutor, TabExecutor{
             }
             if ( args.length == 1 ){
 
-                if ( args[0].startsWith("-") ){
-                    final var wording = args[0].split("-")[1];
+                if ( firstWord.startsWith("-") ){
+                    final var wording = firstWord.split("-")[1];
                     if ( wording.equalsIgnoreCase("w") ){
                         showLocation(send,null,true);
                     }
                 }
-                final var otherPlayer = Bukkit.getPlayerExact(args[0]);
+                final var otherPlayer = Bukkit.getPlayerExact(firstWord);
                 final var nnPl = Validate.notNull(otherPlayer,"Bad Player Name");
 
                 showLocation(nnPl,send,false);
@@ -63,12 +91,12 @@ public class WorldCommand implements CommandExecutor, TabExecutor{
             sender = player;
         }
         if ( worldOnly ){
-            sender.sendRawMessage(ColorWords.get("&b" + world));
+            sender.sendRawMessage(Coloring.get("&b" + world));
         }
-        sender.sendMessage(ColorWords.get(
+        sender.sendMessage(Coloring.get(
                 "&3World&7: &7" + world));
 
-        sender.sendMessage(ColorWords.get(
+        sender.sendMessage(Coloring.get(
                 "&3Coordinates&7: &7" + coords));
     }
 

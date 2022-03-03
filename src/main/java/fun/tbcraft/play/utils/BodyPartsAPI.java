@@ -98,8 +98,11 @@ public final class BodyPartsAPI  {
      * @param c the location
      * @return if b is between a and c.
      */
-    static boolean b(double a, double b, double c) {return a < b && c > b;}
+    private static boolean b(double a, double b, double c) {return a < b && c > b;}
 
+    public static boolean between(double a, double b, double c){
+        return b(a, b, c);
+    }
     public enum BodyPart {
         RIGHT_LEG, LEFT_LEG, BODY, RIGHT_ARM, LEFT_ARM, HEAD
     }

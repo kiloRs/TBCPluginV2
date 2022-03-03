@@ -1,7 +1,7 @@
 <component name="libraryTable">
-  <library name="MMOBars-2.3.2">
+  <library name="ItemsAdder_3.0.0-beta7">
     <CLASSES>
-      <root url="jar://$PLUGINS$/MMOBars-2.3.2.jar!/" />
+      <root url="jar://$PLUGINS$/ItemsAdder_3.0.0-beta7.jar!/" />
     </CLASSES>
     <JAVADOC />
     <SOURCES />
