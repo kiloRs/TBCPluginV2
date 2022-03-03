@@ -3,9 +3,12 @@ package fun.tbcraft.play.listener;
 import dev.lone.itemsadder.main.S;
 import fun.tbcraft.play.TBCPlugin;
 import fun.tbcraft.play.utils.TBCTimeHandler;
+import fun.tbcraft.play.utils.log.TBCFileLogger;
+import fun.tbcraft.play.utils.log.TBCLogger;
 import io.lumine.mythic.lib.MythicLib;
 import io.lumine.mythic.lib.api.event.skill.PlayerCastSkillEvent;
 import io.lumine.mythic.lib.manager.SkillManager;
+import io.lumine.mythic.lib.skill.Skill;
 import io.lumine.mythic.lib.skill.SkillMetadata;
 import io.lumine.mythic.lib.skill.handler.MythicMobsSkillHandler;
 import io.lumine.mythic.lib.skill.handler.SkillHandler;
@@ -13,6 +16,8 @@ import io.lumine.mythic.lib.skill.result.MythicMobsSkillResult;
 import io.lumine.mythic.lib.skill.result.SkillResult;
 import io.papermc.paper.event.world.border.WorldBorderBoundsChangeEvent;
 import net.Indyuce.mmocore.api.ConfigFile;
+import net.Indyuce.mmocore.skill.CastableSkill;
+import net.Indyuce.mmocore.skill.ClassSkill;
 import net.Indyuce.mmoitems.MMOItems;
 import net.Indyuce.mmoitems.api.block.CustomBlock;
 import net.Indyuce.mmoitems.api.util.MushroomState;
@@ -41,6 +46,24 @@ public class StartupListener implements Listener{
     private List<String> skillHandlerList = new ArrayList<>();
 
     public void onSkill(PlayerCastSkillEvent e){
+        final var skill = e.getCast();
+
+        if ( skill instanceof CastableSkill castableSkill){
+            final var classSkill = castableSkill.getSkill();
+            final var skillName = classSkill.getSkill().getName();
+            final var cooldownPath = castableSkill.getCooldownPath();
+            final var minLevel = classSkill.getUnlockLevel();
+            final var hasMaxLevel = classSkill.hasMaxLevel();
+            final var maxLevel = classSkill.getMaxLevel();
+
+            TBCPlugin.writeToFile("Skill Cast Data: " + skillName);
+            TBCPlugin.writeToFile("Cooldown Path: " + cooldownPath);
+            TBCPlugin.writeToFile("Min Level: " + minLevel);
+            TBCPlugin.writeToFile("Max Level: " + maxLevel);
+
+            TBCPlugin.log("Skill: " + skillName);
+            TBCPlugin.log("Level Data; " + minLevel + " - " + maxLevel);
+        }
     }
     public void onJoin(PlayerJoinEvent e){
         var world = e.getPlayer().getWorld();
