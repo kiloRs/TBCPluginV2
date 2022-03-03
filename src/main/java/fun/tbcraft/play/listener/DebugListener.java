@@ -1,50 +1,33 @@
 package fun.tbcraft.play.listener;
 
-import dev.lone.itemsadder.main.S;
 import fun.tbcraft.play.TBCPlugin;
+import fun.tbcraft.play.block.BlockCore;
 import fun.tbcraft.play.utils.TBCTimeHandler;
-import fun.tbcraft.play.utils.log.TBCFileLogger;
-import fun.tbcraft.play.utils.log.TBCLogger;
 import io.lumine.mythic.lib.MythicLib;
 import io.lumine.mythic.lib.api.event.skill.PlayerCastSkillEvent;
-import io.lumine.mythic.lib.manager.SkillManager;
-import io.lumine.mythic.lib.skill.Skill;
-import io.lumine.mythic.lib.skill.SkillMetadata;
-import io.lumine.mythic.lib.skill.handler.MythicMobsSkillHandler;
 import io.lumine.mythic.lib.skill.handler.SkillHandler;
-import io.lumine.mythic.lib.skill.result.MythicMobsSkillResult;
-import io.lumine.mythic.lib.skill.result.SkillResult;
-import io.papermc.paper.event.world.border.WorldBorderBoundsChangeEvent;
-import net.Indyuce.mmocore.api.ConfigFile;
 import net.Indyuce.mmocore.skill.CastableSkill;
-import net.Indyuce.mmocore.skill.ClassSkill;
-import net.Indyuce.mmoitems.MMOItems;
-import net.Indyuce.mmoitems.api.block.CustomBlock;
-import net.Indyuce.mmoitems.api.util.MushroomState;
-import net.kyori.adventure.text.format.Style;
-import net.kyori.adventure.text.format.TextDecoration;
-import net.kyori.adventure.util.Buildable;
-import org.bukkit.World;
+import net.Indyuce.mmoitems.stat.data.AbilityData;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
-import org.bukkit.event.block.BlockMultiPlaceEvent;
 import org.bukkit.event.block.BlockPlaceEvent;
 import org.bukkit.event.player.PlayerJoinEvent;
-import org.jetbrains.annotations.NotNull;
 
-import java.awt.*;
-import java.time.LocalDateTime;
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.List;
-import java.util.Optional;
 
 
-public class StartupListener implements Listener{
+public class DebugListener implements BaseListener{
     private static String ovv = "default";
     private static List<String> acceptableWorlds = TBCPlugin.getConfiguration().getStringList("Worlds");
     private List<String> skillHandlerList = new ArrayList<>();
+    private static boolean cancelEach = false;
+    private static boolean debug = false;
 
+    public DebugListener(){
+
+    }
+    @EventHandler
     public void onSkill(PlayerCastSkillEvent e){
         final var skill = e.getCast();
 
@@ -64,7 +47,21 @@ public class StartupListener implements Listener{
             TBCPlugin.log("Skill: " + skillName);
             TBCPlugin.log("Level Data; " + minLevel + " - " + maxLevel);
         }
+        if ( skill instanceof AbilityData abilityData ) {
+            final var abilityDataHandler = abilityData.getHandler();
+            final var itemHandler = abilityDataHandler.getId();
+            final var registeredSkill = abilityData.getAbility();
+            final var skillName = registeredSkill.getName();
+
+            TBCPlugin.debug("Casting Ability: " + skillName);
+            TBCPlugin.debug("Using Handler: " + itemHandler);
+            TBCPlugin.debug("Amount of Modifiers: " + abilityData.getModifiers().size());
+            for(String each : abilityData.getModifiers()) {
+                TBCPlugin.debug(each + " : " + abilityData.getModifier(each));
+            }
+        }
     }
+    @EventHandler
     public void onJoin(PlayerJoinEvent e){
         var world = e.getPlayer().getWorld();
 
@@ -107,5 +104,59 @@ public class StartupListener implements Listener{
 
         }
     }
+    @EventHandler
+    public void on(BlockPlaceEvent p) {
+        final var block = p.getBlockPlaced();
+        final var blockCore = BlockCore.createBlockCore(block , debug);
 
+        if ( cancelEach ){
+            p.setCancelled(true);
+        }
+
+        if ( blockCore.isCustom() ) {
+            final var customBlock = blockCore.getCustomBlock();
+
+            if ( customBlock == null ){
+                return;
+
+            }
+
+            final var s = customBlock.getState();
+            final var uniqueId = s.getUniqueId();
+
+            TBCPlugin.log("Block Id: " + uniqueId);
+
+            if ( p.getPlayer().isOp() ){
+                TBCPlugin.log("Block Type: " + customBlock.getId());
+                TBCPlugin.log("Block UUID: " + s.getUniqueId());
+                TBCPlugin.log("Up: "+ s.getSide("up"));
+                TBCPlugin.log("Down: "+s.getSide("down"));
+                TBCPlugin.log("North: " +s.getSide("north") );
+                TBCPlugin.log("South: " +s.getSide("south") );
+                TBCPlugin.log("East: " +s.getSide("east") );
+                TBCPlugin.log("West: " +s.getSide("west") );
+
+            }
+        }
+    }
+
+    @Override
+    public String getID ( ) {
+        return "Debug";
+    }
+
+    @Override
+    public boolean cancelAll (boolean useStop) {
+        return cancelEach;
+    }
+
+    @Override
+    public boolean shouldUse ( ) {
+        return debug;
+    }
+
+    @Override
+    public void setUseState (Boolean be) {
+        debug = be;
+    }
 }

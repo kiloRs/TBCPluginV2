@@ -1,12 +1,14 @@
-package fun.tbcraft.play.utils;
+package fun.tbcraft.play.block;
 
 import fun.tbcraft.play.TBCPlugin;
 import net.Indyuce.mmoitems.MMOItems;
 import net.Indyuce.mmoitems.api.block.CustomBlock;
+import org.apache.commons.lang.Validate;
 import org.bukkit.block.Block;
 import org.bukkit.block.SculkSensor;
 import org.bukkit.block.TileState;
 import org.bukkit.block.data.BlockData;
+import org.bukkit.entity.Player;
 import org.bukkit.event.block.BlockPlaceEvent;
 import org.bukkit.metadata.FixedMetadataValue;
 
@@ -20,11 +22,15 @@ public class BlockCore{
     private final CustomBlock customBlock;
     private boolean needspecial = false;
 
+    public BlockCore(Player p){
+        this(p.getTargetBlock(100),p.isOp());
+    }
     public BlockCore (BlockPlaceEvent event) {
-        this(event.getBlockPlaced());
+        this(event.getBlockPlaced(),TBCPlugin.getConfiguration().exists("Debug.Blocks")&&TBCPlugin.getConfiguration().getBoolean("Debug.Blocks"));
     }
 
-    private BlockCore (Block block){
+    BlockCore (Block block , boolean extraTests){
+        Validate.notNull(block,"The block found is actually null!");
         this.block = block;
         this.blockData = block.getBlockData();
         this.customBlock = MMOItems.plugin.getCustomBlocks().getFromBlock(blockData).orElse(null);
@@ -44,9 +50,10 @@ public class BlockCore{
             }
             return;
         }
-        //Testing SculkSensor Block as TileState
-        checkSculkSensorDebug(block);
-
+        if ( !needspecial && extraTests ) {
+            //Testing SculkSensor Block as TileSate
+            checkSculkSensorDebug(block);
+        }
 
     }
 
@@ -80,14 +87,16 @@ public class BlockCore{
 
 
     public static BlockCore createBlockUtil (Block block) {
-        return new BlockCore(block);
+        return createBlockCore(block,true);
     }
-
-    public boolean isSpecial ( ) {
-        return needspecial;
+    public static BlockCore createBlockCore(Block block,boolean debug){
+        return new BlockCore(block,debug);
     }
 
     public Block getBlock ( ) {
         return block;
+    }
+    public static boolean isMushroomBlock(Block block){
+        return MMOItems.plugin.getCustomBlocks().isMushroomBlock(block.getType());
     }
 }

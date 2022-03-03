@@ -9,8 +9,18 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="7ff34517-188c-4340-a395-beea62381f55" name="Changes" comment="Did some dumb shit">
-      <change beforePath="$PROJECT_DIR$/src/main/java/fun/tbcraft/play/listener/StartupListener.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/fun/tbcraft/play/listener/StartupListener.java" afterDir="false" />
+    <list default="true" id="7ff34517-188c-4340-a395-beea62381f55" name="Changes" comment="Remmoved Dumb Stuff">
+      <change afterPath="$PROJECT_DIR$/src/main/java/fun/tbcraft/play/listener/BaseListener.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/fun/tbcraft/play/listener/BlockListener.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/ItemsAdder_3_0_0_beta7.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/fun/tbcraft/play/TBCPlugin.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/fun/tbcraft/play/TBCPlugin.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/fun/tbcraft/play/commands/SystemCommands.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/fun/tbcraft/play/commands/SystemCommands.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/fun/tbcraft/play/listener/StartupListener.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/fun/tbcraft/play/listener/DebugListener.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/fun/tbcraft/play/utils/BlockCore.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/fun/tbcraft/play/block/BlockCore.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/fun/tbcraft/play/utils/TBCRegistrationFactory.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/fun/tbcraft/play/utils/TBCRegistrationFactory.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/plugin.yml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/plugin.yml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -25,9 +35,9 @@
       <list>
         <option value="Enum" />
         <option value="JUnit5 Test Class" />
-        <option value="Interface" />
         <option value="Kotlin Interface" />
         <option value="Class" />
+        <option value="Interface" />
       </list>
     </option>
   </component>
@@ -45,7 +55,7 @@
   <component name="HighlightingSettingsPerFile">
     <setting file="file://$PROJECT_DIR$/src/main/resources/plugin.yml" root0="FORCE_HIGHLIGHTING" />
     <setting file="jar://$MAVEN_REPOSITORY$/org/purpurmc/purpur/purpur-api/1.18.1-R0.1-SNAPSHOT/purpur-api-1.18.1-R0.1-20220301.065054-129.jar!/org/bukkit/event/player/PlayerJoinEvent.class" root0="SKIP_INSPECTION" />
-    <setting file="file://$PROJECT_DIR$/src/main/java/fun/tbcraft/play/listener/StartupListener.java" root0="SKIP_INSPECTION" />
+    <setting file="file://$PROJECT_DIR$/src/main/java/fun/tbcraft/play/listener/DebugListener.java" root0="SKIP_INSPECTION" />
     <setting file="jar://$MAVEN_REPOSITORY$/me/neznamy/tab-api/3.0.1/tab-api-3.0.1-sources.jar!/me/neznamy/tab/api/TabFeature.java" root0="SKIP_INSPECTION" />
     <setting file="file://$PROJECT_DIR$/src/main/java/fun/tbcraft/play/TBCPlugin.java" root0="SKIP_INSPECTION" />
     <setting file="file://$PROJECT_DIR$/src/main/java/fun/tbcraft/play/commands/WorldCommand.java" root0="SKIP_INSPECTION" />
@@ -80,8 +90,8 @@
     <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5" value="" />
     <property name="create.test.in.the.same.root" value="true" />
     <property name="jdk.selected.JAVA_MODULE" value="17" />
-    <property name="last_opened_file_path" value="$PLUGINS$/CustomDesignedPlugin" />
-    <property name="project.structure.last.edited" value="Artifacts" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../QuickShop-Reremake" />
+    <property name="project.structure.last.edited" value="Libraries" />
     <property name="project.structure.proportion" value="0.31434384" />
     <property name="project.structure.side.proportion" value="0.6064865" />
     <property name="run.code.analysis.last.selected.profile" value="pProject Default" />
@@ -89,11 +99,11 @@
   </component>
   <component name="RecentsManager">
     <key name="CreateClassDialog.RecentsKey">
+      <recent name="fun.tbcraft.play.listener" />
       <recent name="io.lumine.mythic.lib.skill.custom.targeter" />
       <recent name="fun.tbcraft.play.dungeons" />
       <recent name="fun.tbcraft.play" />
       <recent name="fun.tbcraft.play.player.attributes" />
-      <recent name="fun.tbcraft.play.listener" />
     </key>
     <key name="CreateTestDialog.Recents.Supers">
       <recent name="" />
@@ -405,7 +415,14 @@
       <option name="project" value="LOCAL" />
       <updated>1646281895905</updated>
     </task>
-    <option name="localTasksCounter" value="43" />
+    <task id="LOCAL-00043" summary="Adjusted SKill Debug">
+      <created>1646282241840</created>
+      <option name="number" value="00043" />
+      <option name="presentableId" value="LOCAL-00043" />
+      <option name="project" value="LOCAL" />
+      <updated>1646282241840</updated>
+    </task>
+    <option name="localTasksCounter" value="44" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -420,8 +437,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Added Basic Dungeon Crawling Player Data" />
-    <MESSAGE value="Basic Changes" />
     <MESSAGE value="Updated things, removed bad systems for further work" />
     <MESSAGE value="Dumb Shti Im sure..." />
     <MESSAGE value="Added DisplayUtil" />
@@ -445,7 +460,9 @@
     <MESSAGE value="Added Resource Pack Event" />
     <MESSAGE value="Major Basic Changes ;)" />
     <MESSAGE value="Did some dumb shit" />
-    <option name="LAST_COMMIT_MESSAGE" value="Did some dumb shit" />
+    <MESSAGE value="Adjusted SKill Debug" />
+    <MESSAGE value="Remmoved Dumb Stuff" />
+    <option name="LAST_COMMIT_MESSAGE" value="Remmoved Dumb Stuff" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

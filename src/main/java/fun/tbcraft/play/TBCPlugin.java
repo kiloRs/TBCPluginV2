@@ -1,17 +1,14 @@
 package fun.tbcraft.play;
 
-import com.palmergames.bukkit.towny.TownyAPI;
 import fun.tbcraft.play.commands.WorldCommand;
+import fun.tbcraft.play.listener.DebugListener;
+import fun.tbcraft.play.utils.TBCRegistrationFactory;
 import fun.tbcraft.play.utils.log.TBCFileLogger;
 import fun.tbcraft.play.utils.log.TBCLogger;
-import io.lumine.mythic.lib.api.player.EquipmentSlot;
 import io.lumine.mythic.utils.chat.ColorString;
 import io.papermc.lib.PaperLib;
 import me.devtec.theapi.configapi.Config;
 import me.devtec.theapi.utils.datakeeper.DataType;
-import net.Indyuce.mmoitems.MMOItems;
-import net.Indyuce.mmoitems.api.Type;
-import net.Indyuce.mmoitems.api.TypeSet;
 import org.bukkit.Bukkit;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
@@ -27,14 +24,13 @@ import java.util.ArrayList;
 public class TBCPlugin extends JavaPlugin{
     private static Plugin plugin = null;
     private static final TBCFileLogger tbcFileLogger = new TBCFileLogger("log.txt");
-    private static Config mainCommandsConfig;
 
     public static Plugin getPlugin ( ) {
         return plugin;
     }
     private static Config config = new Config("TBCPluginV2/config.yml", DataType.YAML);
     private static Config settings = new Config("TBCPluginV2/settings.yml");
-    private static boolean paperServer = false;
+    private static boolean paperServer = PaperLib.isPaper();
 
     public static Config getConfiguration ( ) {
         return config;
@@ -75,12 +71,12 @@ public class TBCPlugin extends JavaPlugin{
         //Loading Main Stat Below.
         registerCommands(this, "whereami", new WorldCommand(), new WorldCommand());
 
+        TBCRegistrationFactory.getListenerMap().forEach((s , baseListener) -> {
+            registerEvents(baseListener,this);
+        });
+
         if ( config == null ){
             TBCPlugin.config = new Config("TBCPluginV2/config.yml",DataType.YAML);
-        }
-        if ( mainCommandsConfig == null ){
-            mainCommandsConfig = new Config("TBCPluginV2/commands.yml");
-
         }
         if ( settings == null ){
             settings = new Config("TBCPluginV2/settings.yml");
@@ -97,41 +93,29 @@ public class TBCPlugin extends JavaPlugin{
             config.addDefault("Enchanting.Enabled" , false);
             config.addDefault("Enchanting.Amount" , 2);
             config.addDefault("Enchanting.Backup" , true);
+            config.addDefault("Debug.Level",3);
+            config.addDefault("Sensor.Range",20);
+            config.save();
+            config.addComment("Sensor.Range","#The total default amount for sculk sensors!");
+            config.addComment("Debug.level","#Set this to higher than 0 to enable debugg system.");
+            config.addComment("Enchanting.Enabled","#Not Yet Implemented, Coming Soon.");
             config.save();
             log("Added Config Setting: " + "[Enchanting.Enabled]");
         }
-        if ( PaperLib.isPaper() ){
-            paperServer = true;
-            log("Paper Server for TBC Initiated....");
-            try {
-                if ( Bukkit.getPluginManager().isPluginEnabled("Towny") ) {
-                    //Only register if needed with towny!
-                    log("Towny Located");
-                    final var world = Bukkit.getWorld(config.getStringList("Towny.Worlds").get(0));
+        if ( getAntiCheat().getKeys().isEmpty() ){
+            getAntiCheat().addDefault("Enabled",true);
+            getAntiCheat().save();
+            getAntiCheat().addComment("Enabled","#Turn on compatibility with Spartan");
+            getAntiCheat().addDefault("Skills.Individual",false);
+            getAntiCheat().save();
+            getAntiCheat().addComment("Skill.Individual","#Search each skill for targets, and apply bypasses by way of anticheat.");
 
-                    if ( world != null ){
-                        if ( TownyAPI.getInstance().isTownyWorld(world) ) {
-                            log("Towny World: " + world.getName());
-                    }
-                    }
-                }
-            } catch (Exception e) {
-                e.printStackTrace();
-
-                //All goes bad?
-            }
+            getAntiCheat().save();
+            getAntiCheat().reload();
+            log("Added Anticheat Settings!");
         }
 
-        if ( MMOItems.plugin.isEnabled() ) {
-            //Hook for stats!
-            final var type = new Type(TypeSet.OFFHAND,"Passive",false, EquipmentSlot.BOTH_HANDS,true);
-            //Registers New Type
-            MMOItems.plugin.getTypes().register(type);
-            log("MMOItems Hooked!");
-        }
-            log("Completed TBCv2 Startup!");
-
-        setConfigDefaults(0,true);
+        setConfigDefaults(3,true);
 
     }
     static void registerCommands(JavaPlugin plugin, String commandText, CommandExecutor executor, TabCompleter tab) {
@@ -140,9 +124,6 @@ public class TBCPlugin extends JavaPlugin{
             plugin.getCommand(commandText).setTabCompleter(tab);
         }
 
-    }
-    public static Config getCommandConfig(){
-        return mainCommandsConfig;
     }
 
     static void registerEvents(Listener listener, JavaPlugin plugin) {
@@ -162,7 +143,6 @@ public class TBCPlugin extends JavaPlugin{
                         config.reload();
                         settings.reload();
                         getWaypointConfig().reload();
-                        getCommandConfig().reload();;
                         reloadConfig();
                         log("Reloading TBC!");
                         if ( sender instanceof Player player ){

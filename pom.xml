@@ -7,7 +7,7 @@
     <groupId>fun.tbcraft.play</groupId>
     <artifactId>TheBestChoiceMC</artifactId>
     <packaging>pom</packaging>
-    <version>1.0.4</version>
+    <version>1.0.5</version>
 
     <properties>
         <maven.compiler.source>17</maven.compiler.source>
@@ -185,7 +185,7 @@
         <dependency>
             <groupId>me.devtec.theapi</groupId>
             <artifactId>TheAPI</artifactId>
-            <version>8.5</version>
+            <version>8.6</version>
             <scope>system</scope>
             <systemPath>C:/Users/rosen/Downloads/TheAPI.jar</systemPath>
         </dependency>
@@ -211,7 +211,7 @@
         <dependency>
             <groupId>org.purpurmc.purpur</groupId>
             <artifactId>purpur-api</artifactId>
-            <version>1.18.1-R0.1-SNAPSHOT</version>
+            <version>1.18.2-R0.1-SNAPSHOT</version>
             <scope>provided</scope>
         </dependency>
         <dependency>

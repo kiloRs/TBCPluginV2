@@ -57,7 +57,6 @@ public class SystemCommands implements CommandExecutor{
                     TBCPlugin.getSettings().reload();
                     TBCPlugin.getWaypointConfig().reload();
                     TBCPlugin.getConfiguration().reload();
-                    TBCPlugin.getCommandConfig().reload();
                     TBCPlugin.log("Reloading Plugin");
                     player.sendRawMessage("&aReloading the TBC Plugin at " + TimeUtil.getTime(System.currentTimeMillis()));
                 }
